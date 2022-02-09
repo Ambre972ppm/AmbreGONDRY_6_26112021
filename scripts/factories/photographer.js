@@ -10,7 +10,7 @@ function photographerFactory(data) {
         const photograherCard = document.createElement( 'aside' ); // création du container
 
         const photographerLink = document.createElement('a'); // création du lien vers le profile du photographe
-        photographerLink.setAttribute('href', `/photographer.html?id=${id}`); // définition de l'url
+        photographerLink.setAttribute('href', `./photographer.html?id=${id}`); // définition de l'url
         photograherCard.appendChild(photographerLink); // définition du lien comme enfant du container
 
         const profilePicture = document.createElement( 'img' ); // création de la photo de profil
