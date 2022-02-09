@@ -1,5 +1,6 @@
 const urlParams = new URLSearchParams(window.location.search); // on recherche dans l'url de la page
 const photographerSelectedId = urlParams.get("id"); // on récupère l'Id du photographe dans l'url 
+console.log(photographerSelectedId);
 
 // récupération des données correspondant au photographe sélectionné
 function getSelectedPhotographerData() {
