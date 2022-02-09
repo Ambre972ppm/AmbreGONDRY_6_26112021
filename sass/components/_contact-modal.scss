@@ -1,0 +1,74 @@
+/* Contact Modal */
+#modal_bground {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(196, 196, 196, 0.4);
+}
+
+.modal {
+    position: relative;
+    left: 0;
+    right: 0;
+    top: 3rem;
+    bottom: 3rem;
+    border-radius: 5px;
+    background-color: #DB8876;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 35px;
+    margin: auto;
+    header {
+        justify-content: space-between;
+        width: 100%;
+        img {
+            position: absolute;
+            right: 2rem;
+            cursor: pointer;
+        }
+        h2 {
+            font-size: 64px;
+            font-weight: normal;
+            text-align: center;
+            flex-wrap: wrap;
+        }
+    }
+}
+form {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    label {
+        color: #312E2E;
+        font-size: 36px;
+    }
+    div {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: self-start;
+        margin-bottom: 26px;
+    }
+    input, textarea {
+        width: 100%;
+        height: 68px;
+        border: none;
+        border-radius: 5px;
+        padding: 8px;
+        font-size: 30px;
+    }
+}
+#message {
+    height: 170px;
+}
