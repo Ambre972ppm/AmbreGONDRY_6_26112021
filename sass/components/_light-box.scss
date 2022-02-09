@@ -1,0 +1,107 @@
+
+   
+/* LIGHTBOX */
+
+  
+  /* fond de la lightbox */
+  .lightbox {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: white;
+  }
+  
+  /* contenu de la livebox */
+  .lightbox-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    width: 100%;
+    max-width: 1200px;
+    margin-top:50px;
+  }
+  
+  /* bouton fermer */
+  .close-lightbox{
+    color: #901c1c;
+    position: absolute;
+    top: 10px;
+    right: 120px;
+    font-size: 40px;
+  }
+  
+  .close-lightbox:hover,
+  .close-lightbox:focus {
+    color: #999;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .figure_lightbox {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .figure_lightbox figcaption {
+    width:100%;
+    text-align: left;
+    margin-top: 8px;
+    color:#901c1c;
+}
+
+.mySlides{
+    width:800px;
+    margin: auto;
+}
+
+ .mySlides img {
+    height:500px;
+    width:100%;
+    object-fit: cover;
+
+  } 
+
+  .mySlides video {
+    height:500px;
+    width:100%;
+    object-fit: cover;
+  }
+  
+
+  /* Flèches */
+  .prev,
+  .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    color: $color-primary;
+    font-weight: bold;
+    font-size: 40px;
+    transition: 0.6s ease;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  
+  /* Positionne la flèche next */
+  .next {
+    right: 120px;
+  }
+
+  /* Positionne la flèche prev */
+  .prev {
+      left: 120px;
+  }
+  
+  /* Modifie la couleur des boutons au survol */
+  .prev:hover,
+  .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  

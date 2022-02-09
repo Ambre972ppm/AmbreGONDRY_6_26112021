@@ -1,0 +1,115 @@
+/* Photograph header */
+#photograph-header {
+    position: relative;
+    background-color: #FAFAFA;
+    height: 300px;
+    margin: 0 100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    padding-left: 2rem;
+    img {
+        position: absolute;
+        top : 3rem;
+        right: 2rem;
+        height: 200px;
+        width: 200px;
+        border-radius: 100%;
+        object-fit: cover; 
+    }
+}
+
+#photograph-introduction {
+    h2 {
+        color: $color-secondary;
+        font-size: 64px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 47px;
+        margin-bottom: 0;
+    }
+    p {
+        font-size: 18px;
+        color:#525252;
+    }
+}
+
+#photograph-introduction h3,
+#photograph-medias-section h3, 
+#photograph-medias-section p {
+    color: $color-primary;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.contact_button {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    padding: 11px;
+    width: 170px;
+    height: 70px;
+    border: none;
+    background-color: $color-primary;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* photograph Media */
+#photograph-medias-section {
+    margin-top: 20px;
+    margin: 100px;
+}
+#photograph-medias-section-sortBy{
+    display: flex;
+    align-items: center;
+    label{
+        font-weight: 700;
+        font-size: 18px;
+    }
+}
+#sortBy {
+    margin-left: 1rem;
+    font-weight: 700;
+    font-size: 18px;
+    color: white;
+    padding: 11px;
+    width: 170px;
+    height: 70px;
+    border: none;
+    background-color: $color-primary;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#photograph-medias {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+    margin-top: 80px;
+    img {
+        height: 300px;
+        width: 350px;
+        object-fit: cover;
+        filter: drop-shadow(-1px 6px 8px #525252);
+        background: #C4C4C4;
+        border-radius: 5px;
+    }
+    video {
+        height: 300px;
+        width: 350px;
+        object-fit: cover;
+        filter: drop-shadow(-1px 6px 8px #525252);
+        background: #C4C4C4;
+        border-radius: 5px;
+    }
+}
+figcaption {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: $color-primary;
+}

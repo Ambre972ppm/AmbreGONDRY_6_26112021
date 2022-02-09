@@ -1,0 +1,44 @@
+.photographer_section {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 70px;
+    margin-top: 100px;
+    line-height: 0.5rem;
+    aside {
+        justify-self: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+        text-decoration: none;
+    }
+    img {
+        height: 200px;
+        width: 200px;
+        border-radius: 100%;
+        object-fit: cover;
+        filter: drop-shadow(-1px 6px 8px #525252);
+    }
+    h2 {
+        color: $color-secondary;
+        font-size: 36px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 47px;
+        text-align: center;
+        margin-bottom: 0;
+    }
+    h3 {
+        color: $color-primary;
+        font-family: DM Sans;
+        font-size: 18px;
+        font-weight: 500;
+    }
+    p {
+        font-size: 12px;
+    }
+    .rate {
+        color:#525252;
+    }
+}
