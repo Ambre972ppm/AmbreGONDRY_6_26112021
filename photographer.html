@@ -8,28 +8,82 @@
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <a href="index.html">
+        <img src="./assets/logo/logo.png" class="logo" />
+      </a>
     </header>
     <main id="main">
-      <div class="photograph-header">
+      <div id="photograph-header">
+        <aside id="photograph-introduction"></aside>
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
       </div>
+      <section id="photograph-medias-section">
+        <div id="photograph-medias-section-sortBy">
+          <label>Trier par</label>
+            <select id="sortBy">
+              <option value="Popularité">Popularité</option>
+              <option value="Date">Date</option>
+              <option value="Titre">Titre</option>
+            </select>
+        </div>
+        <div id="photograph-medias">
+        </div>
+      </section>
     </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
-    <script src="/scripts/utils/contactForm.js"></script>
+    <div id="modal_bground">
+      <div id="contact_modal">
+        <div class="modal">
+          <header>
+            <h2>Contactez-moi</h2>
+            <img src="./assets/icons/close_white.svg" onclick="closeModal()" />
+          </header>
+          <form>
+            <div  class="contactFormData"
+                  id="firstNameData">
+              <label for="firstName">Prénom</label>
+              <input 
+                class="text-control"
+                type="text"
+                id="firstName"
+                name="firstName"
+                minlength="2"/>
+            </div>
+            <div  class="contactFormDate"
+                  id="lastNameData">
+              <label for="lastName">Nom</label>
+              <input 
+                class="text-control"
+                type="text"
+                id="lastName"
+                name="lastName"
+                minlength="2"/>
+            </div>
+            <div  class="contactFormDate"
+                  id="emailData">
+              <label for="email">Email</label>
+              <input 
+                class="text-control"
+                type="email"
+                id="email"
+                name="email"/>
+            </div>
+            <div  class="contactFormDate"
+                  id="messageData">
+              <label for="message">Votre message</label>
+              <textarea 
+                class="text-control"
+                type="text"
+                id="message"
+                name="message"></textarea>
+            </div>
+    
+            <button class="contact_button">Envoyer</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="scripts/factories/media.js"></script>
+    <script src="scripts/pages/photographer.js"></script>
+    <script src="scripts/utils/contactForm.js"></script>
   </body>
 </html>
