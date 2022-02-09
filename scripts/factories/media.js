@@ -19,7 +19,7 @@ function photographerCardFactory(photographer) {
         photographIntroduction.appendChild(profileQuote); // est l'enfant du lien
       
         const profilePicture = document.createElement( 'img' ); // création de la photo de profil
-        profilePicture.setAttribute("src", `/assets/photographers/${portrait}`); // définition de l'image
+        profilePicture.setAttribute("src", `./assets/photographers/${portrait}`); // définition de l'image
         profilePicture.setAttribute("alt", `${name}`); // définition du nom de l'image
         photographIntroduction.appendChild(profilePicture); // est l'enfant du lien du profil
         
@@ -40,11 +40,11 @@ function mediaFactory(media) {
         if(image) {
             
             const pictureLink = document.createElement('a'); // création du lien vers le profile du photographe
-            pictureLink.setAttribute('href', `assets/medias/${photographerSelectedId}/${image}`); // définition de l'url
+            pictureLink.setAttribute('href', `./assets/medias/${photographerSelectedId}/${image}`); // définition de l'url
             mediaCard.appendChild(pictureLink); // définition du lien comme enfant du container
 
             const photographPicture = document.createElement('img');
-            photographPicture.setAttribute("src", `assets/medias/${photographerSelectedId}/${image}`);
+            photographPicture.setAttribute("src", `./assets/medias/${photographerSelectedId}/${image}`);
             photographPicture.setAttribute("alt", `${title}`);
             pictureLink.appendChild(photographPicture);
 
@@ -63,11 +63,11 @@ function mediaFactory(media) {
         } else if(video) {
             
             const videoLink = document.createElement('a'); // création du lien vers le profile du photographe
-            videoLink.setAttribute('href', `assets/medias/${photographerSelectedId}/${video}`); // définition de l'url
+            videoLink.setAttribute('href', `./assets/medias/${photographerSelectedId}/${video}`); // définition de l'url
             mediaCard.appendChild(videoLink); // définition du lien comme enfant du container
 
             const photographVideo = document.createElement('video');
-            photographVideo.setAttribute("src", `assets/medias/${photographerSelectedId}/${video}`);
+            photographVideo.setAttribute("src", `./assets/medias/${photographerSelectedId}/${video}`);
             photographVideo.setAttribute("alt", `${title}`);
             videoLink.appendChild(photographVideo);
 
