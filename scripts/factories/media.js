@@ -57,7 +57,7 @@ function mediaFactory(media) {
             pictureFigcaption.appendChild(pictureName); // est l'enfant du lien du profil
 
             const pictureLikesCount = document.createElement('p');
-            pictureLikesCount.textContent = `${likes}`;
+            pictureLikesCount.innerHTML = `${likes} <i class="fas fa-heart full"></i>`;
             pictureFigcaption.appendChild(pictureLikesCount);
 
         } else if(video) {
@@ -80,7 +80,7 @@ function mediaFactory(media) {
             videoFigcaption.appendChild(videoName); // est l'enfant du lien du profil
 
             const videoLikesCount = document.createElement('p');
-            videoLikesCount.textContent = `${likes}`;
+            videoLikesCount.innerHTML = `${likes} <i class="fas fa-heart full"></i>`;;
             videoFigcaption.appendChild(videoLikesCount);
         }
 

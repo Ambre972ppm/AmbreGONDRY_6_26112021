@@ -366,5 +366,8 @@ figcaption {
   align-items: center;
   color: #901c1c;
 }
+figcaption i {
+  cursor: pointer;
+}
 
 /*# sourceMappingURL=style.css.map */
