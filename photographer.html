@@ -1,90 +1,90 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link href="./public/css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
-  </head>
-  <body>
-    <header>
-      <a href="index.html">
-        <img src="./assets/logo/logo.png" class="logo" />
-      </a>
-    </header>
-    <main id="main">
-      <div id="photograph-header">
-        <aside id="photograph-introduction"></aside>
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+   <head>
+      <link href="./public/css/style.css" rel="stylesheet" type="text/css" />
+      <meta charset="utf-8">
+      <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+      <title>Fisheye - photographe </title>
+   </head>
+   <body>
+      <header>
+         <a href="index.html">
+         <img src="./assets/logo/logo.png" class="logo" alt="page d'accueil Fisheye"/>
+         </a>
+      </header>
+      <main id="main">
+         <div id="photograph-header">
+            <aside id="photograph-introduction"></aside>
+            <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+         </div>
+         <section id="photograph-medias-section">
+            <div id="photograph-medias-section-sortBy" aria-label="triez par Popularité, Date ou par Titre">
+               <label>Trier par</label>
+               <select id="sortBy">
+                  <option value="Popularité">Popularité</option>
+                  <option value="Date">Date</option>
+                  <option value="Titre">Titre</option>
+               </select>
+            </div>
+            <div id="photograph-medias">
+            </div>
+         </section>
+         <div id="all-likes-and-rate"></div>
+      </main>
+      <div id="modal_bground">
+         <div id="contact_modal">
+            <div class="modal">
+               <header>
+                  <h2 id="contact_modal_title">Contactez-moi</h2>
+                  <img src="./assets/icons/close_white.svg" alt="fermer le formulaire" onclick="closeModal()" />
+               </header>
+               <form>
+                  <div  class="contactFormData"
+                     id="firstNameData">
+                     <label for="firstName">Prénom</label>
+                     <input 
+                        class="text-control"
+                        type="text"
+                        id="firstName"
+                        name="firstName"
+                        minlength="2"/>
+                  </div>
+                  <div  class="contactFormDate"
+                     id="lastNameData">
+                     <label for="lastName">Nom</label>
+                     <input 
+                        class="text-control"
+                        type="text"
+                        id="lastName"
+                        name="lastName"
+                        minlength="2"/>
+                  </div>
+                  <div  class="contactFormDate"
+                     id="emailData">
+                     <label for="email">Email</label>
+                     <input 
+                        class="text-control"
+                        type="email"
+                        id="email"
+                        name="email"/>
+                  </div>
+                  <div  class="contactFormDate"
+                     id="messageData">
+                     <label for="message">Votre message</label>
+                     <textarea   
+                        class="text-control"
+                        id="message"
+                        name="message"></textarea>
+                  </div>
+                  <button class="contact_button">Envoyer</button>
+               </form>
+            </div>
+         </div>
       </div>
-      <section id="photograph-medias-section">
-        <div id="photograph-medias-section-sortBy">
-          <label>Trier par</label>
-            <select id="sortBy">
-              <option value="Popularité">Popularité</option>
-              <option value="Date">Date</option>
-              <option value="Titre">Titre</option>
-            </select>
-        </div>
-        <div id="photograph-medias">
-        </div>
-      </section>
-    </main>
-    <div id="modal_bground">
-      <div id="contact_modal">
-        <div class="modal">
-          <header>
-            <h2 id="contact_modal_title">Contactez-moi</h2>
-            <img src="./assets/icons/close_white.svg" onclick="closeModal()" />
-          </header>
-          <form>
-            <div  class="contactFormData"
-                  id="firstNameData">
-              <label for="firstName">Prénom</label>
-              <input 
-                class="text-control"
-                type="text"
-                id="firstName"
-                name="firstName"
-                minlength="2"/>
-            </div>
-            <div  class="contactFormDate"
-                  id="lastNameData">
-              <label for="lastName">Nom</label>
-              <input 
-                class="text-control"
-                type="text"
-                id="lastName"
-                name="lastName"
-                minlength="2"/>
-            </div>
-            <div  class="contactFormDate"
-                  id="emailData">
-              <label for="email">Email</label>
-              <input 
-                class="text-control"
-                type="email"
-                id="email"
-                name="email"/>
-            </div>
-            <div  class="contactFormDate"
-                  id="messageData">
-              <label for="message">Votre message</label>
-              <textarea 
-                class="text-control"
-                type="text"
-                id="message"
-                name="message"></textarea>
-            </div>
-    
-            <button class="contact_button">Envoyer</button>
-          </form>
-        </div>
-      </div>
-    </div>
-    <script src="scripts/factories/media.js"></script>
-    <script src="scripts/pages/photographer.js"></script>
-    <script src="scripts/utils/contactForm.js"></script>
-    <script src="https://kit.fontawesome.com/a3cdcab57d.js" crossorigin="anonymous"></script>
-  </body>
+      <script src="scripts/factories/media.js"></script>
+      <script src="scripts/factories/photographerTotalLikes.js"></script>
+      <script src="scripts/pages/photographer.js"></script>
+      <script src="scripts/utils/contactForm.js"></script>
+      <script src="https://kit.fontawesome.com/a3cdcab57d.js" crossorigin="anonymous"></script>
+   </body>
 </html>

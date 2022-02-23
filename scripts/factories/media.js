@@ -32,8 +32,8 @@ function photographerCardFactory(photographer) {
   
 // fonction pour afficher le travail du photographe sélectionné
 function mediaFactory(media) {
-    const { id, title, image, video, likes } = media;
-  
+    const { id, title, image, video, likes, price } = media;
+    
     function getMediaCard() {
         const mediaCard = document.createElement('aside');
 
@@ -89,4 +89,3 @@ function mediaFactory(media) {
 
     return { id, title, image, video, likes, getMediaCard }
 }
-  

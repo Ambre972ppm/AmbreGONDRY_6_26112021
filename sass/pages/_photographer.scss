@@ -116,3 +116,18 @@ figcaption {
         cursor: pointer;
     }
 }
+#all-likes-and-rate{
+    position: fixed;
+    bottom: 0;
+    right: 10%;
+    background-color: #DB8876;
+    width: 300px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 15px 0;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    font-weight: 700;
+    z-index: 500;
+}
