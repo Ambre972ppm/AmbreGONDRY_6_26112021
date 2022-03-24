@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
    <head>
       <link href="./public/css/style.css" rel="stylesheet" type="text/css" />
       <meta charset="utf-8">
@@ -13,32 +13,58 @@
          </a>
       </header>
       <main id="main">
-         <div id="photograph-header">
+         <section id="photograph-header">
             <aside id="photograph-introduction"></aside>
             <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-         </div>
-         <section id="photograph-medias-section">
-            <div id="photograph-medias-section-sortBy" aria-label="triez par Popularité, Date ou par Titre">
-               <label>Trier par</label>
-               <select id="sortBy">
-                  <option value="Popularité">Popularité</option>
-                  <option value="Date">Date</option>
-                  <option value="Titre">Titre</option>
-               </select>
-            </div>
-            <div id="photograph-medias">
-            </div>
          </section>
-         <div id="all-likes-and-rate"></div>
+
+         <section id="photograph-medias-section">
+               
+               <aside id="sortBy-menu">
+                  <div class="sortBy-menu">
+                     <label>Trier par</label>
+                     <select id="sortBy">
+                        <option value="Popularité">Popularité</option>
+                        <option value="Date">Date</option>
+                        <option value="Titre">Titre</option>
+                     </select>
+                  </div>
+               </aside>
+               
+            <aside id="photograph-medias">
+            </aside>    
+
+            <div id="lightBox" class="lightbox" aria-hidden="false" tabindex="-1">
+               <div class="lightbox__content" >
+                   <a class="lightbox-previous" data-directioninput="previous" tabindex="0">
+                      <img src="./assets/icons/chevron-left.svg" alt="précédent" width="90em" height="90em">
+                   </a>
+                   <div>
+                       <div class="lightbox__container">
+                           <figure>
+                               <figcaption class="lightbox__title" tabindex="0"></figcaption>
+                           </figure>
+                       </div>
+                   </div>
+                   <a class="lightbox-next" data-directioninput="next" tabindex="0">
+                      <img src="./assets/icons/chevron-right.svg" alt="suivant" width="90em" height="90em">
+                   </a>
+               </div>
+               <a class="closeLightBox" href="#">
+                   <img src="assets/icons/close_red.svg" alt="fermer la lightBox" onclick="closeLightBox()">
+               </a>
+           </div>
+         </section>
+         <div id="all-likes-and-rate"><span id="photographer-total-like"></span><span id="photographer-daily-rate"></span></div>
       </main>
       <div id="modal_bground">
          <div id="contact_modal">
             <div class="modal">
                <header>
-                  <h2 id="contact_modal_title">Contactez-moi</h2>
+                  <h2 id="contact_modal_title">Contactez-moi<br><span class="photographer_name"></span></h2>
                   <img src="./assets/icons/close_white.svg" alt="fermer le formulaire" onclick="closeModal()" />
                </header>
-               <form>
+               <form id="contact_modal-form">
                   <div  class="contactFormData"
                      id="firstNameData">
                      <label for="firstName">Prénom</label>
@@ -76,15 +102,15 @@
                         id="message"
                         name="message"></textarea>
                   </div>
-                  <button class="contact_button">Envoyer</button>
+                  <button class="contact_button" aria-label="contactez moi">Envoyer</button>
                </form>
             </div>
          </div>
       </div>
       <script src="scripts/factories/media.js"></script>
-      <script src="scripts/factories/photographerTotalLikes.js"></script>
       <script src="scripts/pages/photographer.js"></script>
       <script src="scripts/utils/contactForm.js"></script>
+      <script src="scripts/utils/lightBox.js"></script>
       <script src="https://kit.fontawesome.com/a3cdcab57d.js" crossorigin="anonymous"></script>
    </body>
 </html>

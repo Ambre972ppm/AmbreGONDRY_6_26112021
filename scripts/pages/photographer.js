@@ -1,5 +1,5 @@
-const urlParams = new URLSearchParams(window.location.search); // on recherche dans l'url de la page
-const photographerSelectedId = urlParams.get("id"); // on récupère l'Id du photographe dans l'url 
+const photographerSelectedId = new URLSearchParams(window.location.search).get("id"); // on récupère l'Id du photographe dans l'url
+const sortBy = document.getElementById('sortBy');
 
 // récupération des données correspondant au photographe sélectionné
 function getSelectedPhotographerData() {
@@ -8,71 +8,68 @@ function getSelectedPhotographerData() {
       .then((value) => {
         photographers = value.photographers;
         medias = value.media;
+
         displayPhotographerSelected(photographers); // on affiche le photographe
-        displayPhotographerSelectedMedias(medias, "Popularité"); // on affiche les medias correspondant au photographe 
-        // displayAllLikes(medias);
+        displayPhotographerSelectedMedias(medias); // on affiche les medias correspondant au photographe 
+
+        sortBy.onchange = function (){displayPhotographerSelectedMedias(medias)};
+
       })
   }
 
 // fonction d'affichage de la carte du photographe selectionné
   function displayPhotographerSelected(photographers) {
+
     photographers.find((photographer) => {
       if(photographer.id == photographerSelectedId) {
         const photographerModel = photographerCardFactory(photographer);
         photographerModel.getPhotographerCard();
       }
     });
+
+    
   };
 
 // fonction d'affichage des médias du photographe selectionné
-  function displayPhotographerSelectedMedias(medias, sortBy) {
+  function displayPhotographerSelectedMedias(medias) {
     const mediaSection = document.getElementById("photograph-medias");
+    const allLikes = document.getElementById("photographer-total-like");
+    let totalLikes = 0;
 
-    let mediasSorted = null;
+    switch (sortBy.value) {
+      case "popularity" :
+        medias.sort (function (a, b) {
+            return b.likes - a.likes;
+        })
+        break;
 
-    //  tri des medias par
-    mediasSorted = medias.sort((a, b) => {
-      return a.likes - b.likes;
-    });
+    case "date" :
+        medias.sort (function (a, b) {
+            return new Date(b.date) - new Date(a.date);
+        })
+        break;
 
-    if (sortBy === "Popularité") {
-      mediasSorted = medias.sort((a, b) => {
-        return a.likes - b.likes;
-      });
-    } else if (sortBy === "Date") {
-      mediasSorted.sort((a, b) => {
-        return new Date(b.date) - new Date(a.date);
-      });
-    } else if (sortBy === "Titre") {
-      mediasSorted = medias.sort((a, b) => {
-        if (a.title < b.title) {
-          return -1;
-        }
-        if (a.title > b.title) {
-          return 1;
-        }
-        return 0;
-      });
-    }
-    
-    mediasSorted.forEach((media) => {
+    case "title" :
+        medias.sort (function (a, b) {
+            return a.title.localeCompare (b.title);
+        })
+        break;
+  }
+
+    medias.forEach((media) => {
       if(media.photographerId == photographerSelectedId) {
         const mediaModel = mediaFactory(media);
         const mediaCard = mediaModel.getMediaCard();
         mediaSection.appendChild(mediaCard);
+        totalLikes = totalLikes + media.likes;
       }
     })
+
+    allLikes.innerHTML = `<p>${totalLikes} <i class="fas fa-heart full"></i></p>`;    
   }
 
-  //fonction d'affichage du total des likes du photographe selectionné et du tarif journalier
-  function displayAllLikes(medias) {
-    const allLikesAndRate = document.getElementById("all-likes-and-rate");
-    medias.forEach((media) => {
-        const TotalLikesModel = TotalLikesFactory(media);
-        const TotalLikesCard = TotalLikesModel.getTotalLikesCard();
-        allLikesAndRate.appendChild(TotalLikesCard);
-      });
-}
+
+
 
   
   getSelectedPhotographerData();
