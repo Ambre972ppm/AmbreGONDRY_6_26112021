@@ -105,8 +105,8 @@ function mediaFactory(media) {
             videoFigcaption.appendChild(videoName); // est l'enfant du lien du profil
 
             const videoLikesCount = document.createElement('p');
-            videoLikesCount.setAttribute = ('aria-label', 'likes')
-            videoLikesCount.setAttribute('class', 'videoLikes');
+            videoLikesCount.setAttribute = ('aria-label', 'likes');
+            videoLikesCount.setAttribute = ('class', 'videoLikes');
             videoLikesCount.innerHTML = `${likes} <i class="fas fa-heart full"></i>`;
             videoFigcaption.appendChild(videoLikesCount);
         }
