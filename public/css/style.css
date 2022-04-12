@@ -289,6 +289,10 @@ form button {
 }
 
 /* photograph Media */
+.fa-heart {
+  padding-inline: 0.5em;
+}
+
 #photograph-medias-section {
   margin-top: 20px;
   margin: 100px;
@@ -339,7 +343,7 @@ figcaption {
   align-items: center;
   color: #901c1c;
 }
-figcaption i {
+figcaption .mediaLikesContainer {
   cursor: pointer;
 }
 

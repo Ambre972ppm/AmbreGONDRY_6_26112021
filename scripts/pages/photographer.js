@@ -1,61 +1,50 @@
-const photographerSelectedId = new URLSearchParams(window.location.search).get("id"); // on récupère l'Id du photographe dans l'url
-const sortBy = document.getElementById('sortBy');
+const photographerSelectedId = new URLSearchParams(window.location.search).get("id"); // ON RECUPERE L'ID DU PHOTOGRAPHE SELECTIONNE DANS L'URL
+const mediaSection = document.getElementById("photograph-medias"); 
 
-// récupération des données correspondant au photographe sélectionné
+// RECUPERATION DES DONNEES DU PHOTOGRAPHE SELECTIONNE
 function getSelectedPhotographerData() {
-    fetch(`data/photographers.json`) // on récupère les données
+    fetch(`data/photographers.json`)
       .then((res) => res.json())
       .then((value) => {
         photographers = value.photographers;
         medias = value.media;
 
-        displayPhotographerSelected(photographers); // on affiche le photographe
-        displayPhotographerSelectedMedias(medias); // on affiche les medias correspondant au photographe 
-
-        sortBy.onchange = function (){displayPhotographerSelectedMedias(medias)};
+        displayPhotographerSelected(photographers); // ON AFFICHE LA CARTE DU PHOTOGRAPHE SELECTIONNE
+        sortMedias(medias);
+        sortPopular(medias);
+        addLikes();
 
       })
   }
 
-// fonction d'affichage de la carte du photographe selectionné
+// FONCTION D'AFFICHACHE DE LA CARTE DU PHOTOGRAPHE
   function displayPhotographerSelected(photographers) {
-
+    // ON RETROUVE NOTRE PHOTOGRAPHE PARMIS LA LISTE DE PHOTOGRAPHES A L'AIDE DE SON IDI
     photographers.find((photographer) => {
       if(photographer.id == photographerSelectedId) {
         const photographerModel = photographerCardFactory(photographer);
-        photographerModel.getPhotographerCard();
+        photographerModel.getPhotographerCard(); //ON CREE NOTRE CARTE PHOTOGRAPHE
       }
     });
 
     
   };
 
-// fonction d'affichage des médias du photographe selectionné
+// FONCTION D'AFFICHAGE DES MEDIAS DU PHOTOGRAPHE 
   function displayPhotographerSelectedMedias(medias) {
-    const mediaSection = document.getElementById("photograph-medias");
     const allLikes = document.getElementById("photographer-total-like");
+
+    const allLikesCount = document.createElement('span');
+    allLikesCount.setAttribute('id', 'totalLikesCount');
+    allLikes.appendChild(allLikesCount);
+
+    const allLikesIcon = document.createElement('i');
+    allLikesIcon.setAttribute('class', 'fas fa-heart');
+    allLikes.appendChild(allLikesIcon);
+
     let totalLikes = 0;
 
-    switch (sortBy.value) {
-      case "popularity" :
-        medias.sort (function (a, b) {
-            return b.likes - a.likes;
-        })
-        break;
-
-    case "date" :
-        medias.sort (function (a, b) {
-            return new Date(b.date) - new Date(a.date);
-        })
-        break;
-
-    case "title" :
-        medias.sort (function (a, b) {
-            return a.title.localeCompare (b.title);
-        })
-        break;
-  }
-
+   
     medias.forEach((media) => {
       if(media.photographerId == photographerSelectedId) {
         const mediaModel = mediaFactory(media);
@@ -65,9 +54,107 @@ function getSelectedPhotographerData() {
       }
     })
 
-    allLikes.innerHTML = `<p>${totalLikes} <i class="fas fa-heart full"></i></p>`;    
+    allLikesCount.textContent = totalLikes;
   }
 
+  // Gestion du tri selon le filtre sélectionné
+function sortMedias(medias) {
+  let sortBy = document.getElementById("sortBy");
+  sortBy.addEventListener('change', e => {
+      switch (e.target.value) {
+          case "Popularité" :
+              sortPopular(medias);
+              break;
+          case "Date" :
+              sortDate(medias);
+              break;
+          case "Titre" :
+              sortTitle(medias);
+          default:
+      }
+  })
+};
+
+function sortPopular(medias) {
+  medias.sort(function(a, b) {
+      if (a.likes < b.likes) {
+          return 1;
+      }
+      if (a.likes > b.likes) {
+          return -1;
+      }
+      return 0;
+  });
+  mediaSection.innerHTML = "";
+  displayPhotographerSelectedMedias(medias);  
+};
+
+function sortTitle(medias) {
+  medias.sort(function(a, b) {
+      if (a.title.toLowerCase() < b.title.toLowerCase()) {
+          return -1;
+      }
+      if (a.title.toLowerCase() > b.title.toLowerCase()) {
+          return 1;
+      }
+      return 0;
+  });
+  mediaSection.innerHTML = "";
+  displayPhotographerSelectedMedias(medias);  
+};
+
+function sortDate(medias) {
+  medias.sort(function(a,b) {
+      if (a.date < b.date) {
+          return -1;
+      }
+      if (a.date > b.date) {
+          return 1;
+      }
+      return 0;
+  });
+  mediaSection.innerHTML = "";
+  displayPhotographerSelectedMedias(medias);
+};
+
+  function addLikes(){
+    const likes = document.querySelectorAll(".mediaLikesIcon");// je cible le span des coeurs
+    const allLikesCount = document.getElementById("totalLikesCount");// je cible le total des likes dans le bandeau
+    let liked = 0;
+
+    likes.forEach(e => {
+
+        //EVENEMENT AU CLICK
+        e.addEventListener("click", function(){// au click sur l'element
+            const likeCount = e.parentElement.children[0];//creation constante qui cible le nbre de like
+
+            if ( liked === 0) {
+                likeCount.textContent++;
+                allLikesCount.textContent++;
+                liked = 1;
+            } else  {
+                likeCount.textContent--;
+                allLikesCount.textContent--;
+                liked = 0;
+            }
+        });
+
+        //EVENEMENT AU CLAVIER AVEC TOUCHE ENTREE
+        e.addEventListener("keypress", function(){
+            const likeCount = e.parentElement.children[1];
+            
+            if ( liked === 0) {
+              likeCount.textContent =  likeCount+1;
+              allLikesCount.textContent++;
+              additionalLike = 1;
+          } else  {
+              likeCount.textContent =  media.likes;
+              allLikesCount.textContent--;
+              additionalLike = -1;
+          }                
+        });
+    });
+}
 
 
 

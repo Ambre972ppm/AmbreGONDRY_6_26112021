@@ -10,6 +10,18 @@ function closeModal() {
     modalBground.style.display = "none";
 }
 
+//close contact modal width keyboard
+window.addEventListener('keyup', (e) => {
+    closeModalWitdhKeyboard(e);
+})
+
+function closeModalWitdhKeyboard(e) {
+    if (document.getElementById("modal_bground").style.display ="block" && e.key === "Escape") {
+        closeModal();
+    }
+}
+
+// sends data filled in the form in the local storage and in the console
 const contactForm = document.getElementById("contact_modal-form");
 contactForm.addEventListener("submit", function(e) {
     e.preventDefault();

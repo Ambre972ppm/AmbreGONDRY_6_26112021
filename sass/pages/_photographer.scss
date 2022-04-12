@@ -62,6 +62,10 @@
 }
 
 /* photograph Media */
+.fa-heart{
+    padding-inline: 0.5em;
+}
+
 #photograph-medias-section {
     margin-top: 20px;
     margin: 100px;
@@ -110,9 +114,10 @@ figcaption {
     justify-content: space-between;
     align-items: center;
     color: $color-primary;
-    i {
+    .mediaLikesContainer {
         cursor: pointer;
     }
+ 
 }
 #all-likes-and-rate{
     position: fixed;
