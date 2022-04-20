@@ -137,9 +137,13 @@ form button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
   width: fit-content;
   max-width: 100%;
   max-height: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
   height: fit-content;
   margin: 0;
   padding: 40px 0 20px 0;
@@ -151,7 +155,8 @@ form button {
 }
 
 .lightbox-media {
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
   margin-bottom: 1em;
   border-radius: 5px;
   max-height: 60vh;
@@ -168,20 +173,13 @@ form button {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-left: 120px;
   cursor: pointer;
   border: none;
   background: none;
 }
 .lightbox-previous :focus, .lightbox-next :focus {
   border: #d3573c;
-}
-
-.lightbox-previous {
-  padding-left: 120px;
-}
-
-.lightbox-next {
-  padding-right: 120px;
 }
 
 .closeLightBox {
@@ -224,7 +222,8 @@ form button {
   height: 200px;
   width: 200px;
   border-radius: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   filter: drop-shadow(-1px 6px 8px #525252);
 }
 .photographer_section h2 {
@@ -268,7 +267,8 @@ form button {
   height: 200px;
   width: 200px;
   border-radius: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   filter: drop-shadow(-1px 6px 8px #525252);
 }
 
@@ -345,7 +345,8 @@ form button {
 #photograph-medias img {
   height: 16em;
   width: 18em;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   background: #C4C4C4;
   border-radius: 5px;
   cursor: pointer;
@@ -353,7 +354,8 @@ form button {
 #photograph-medias video {
   height: 16em;
   width: 18em;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   background: #C4C4C4;
   border-radius: 5px;
   cursor: pointer;
@@ -382,6 +384,4 @@ figcaption .mediaLikesContainer {
   border-top-right-radius: 5px;
   font-weight: 700;
   z-index: 1;
-}
-
-/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */

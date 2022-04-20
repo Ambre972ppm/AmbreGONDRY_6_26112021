@@ -1,5 +1,5 @@
 const photographerSelectedId = new URLSearchParams(window.location.search).get("id"); // ON RECUPERE L'ID DU PHOTOGRAPHE SELECTIONNE DANS L'URL
-const mediaSection = document.getElementById("photograph-medias"); 
+const mediaSection = document.getElementById("photograph-medias");
 
 // RECUPERATION DES DONNEES DU PHOTOGRAPHE SELECTIONNE
 function getSelectedPhotographerData() {
@@ -10,10 +10,7 @@ function getSelectedPhotographerData() {
         medias = value.media;
 
         displayPhotographerSelected(photographers); // ON AFFICHE LA CARTE DU PHOTOGRAPHE SELECTIONNE
-        sortMedias(medias);
-        sortPopular(medias);
-        addLikes();
-
+        sortPopular(medias); // on affiche le tri des médias par défaut par popularité
       })
   }
 
@@ -26,35 +23,29 @@ function getSelectedPhotographerData() {
         photographerModel.getPhotographerCard(); //ON CREE NOTRE CARTE PHOTOGRAPHE
       }
     });
-
-    
   };
 
-// FONCTION D'AFFICHAGE DES MEDIAS DU PHOTOGRAPHE 
+// FONCTION D'AFFICHAGE DES MEDIAS DU PHOTOGRAPHE
   function displayPhotographerSelectedMedias(medias) {
     const allLikes = document.getElementById("photographer-total-like");
-
     const allLikesCount = document.createElement('span');
     allLikesCount.setAttribute('id', 'totalLikesCount');
     allLikes.appendChild(allLikesCount);
 
-    const allLikesIcon = document.createElement('i');
-    allLikesIcon.setAttribute('class', 'fas fa-heart');
-    allLikes.appendChild(allLikesIcon);
-
     let totalLikes = 0;
 
-   
+
     medias.forEach((media) => {
       if(media.photographerId == photographerSelectedId) {
         const mediaModel = mediaFactory(media);
         const mediaCard = mediaModel.getMediaCard();
+
         mediaSection.appendChild(mediaCard);
+
         totalLikes = totalLikes + media.likes;
       }
     })
-
-    allLikesCount.textContent = totalLikes;
+    addLikes(totalLikes);
   }
 
   // Gestion du tri selon le filtre sélectionné
@@ -86,7 +77,8 @@ function sortPopular(medias) {
       return 0;
   });
   mediaSection.innerHTML = "";
-  displayPhotographerSelectedMedias(medias);  
+  displayPhotographerSelectedMedias(medias);
+  sortMedias(medias);
 };
 
 function sortTitle(medias) {
@@ -100,7 +92,7 @@ function sortTitle(medias) {
       return 0;
   });
   mediaSection.innerHTML = "";
-  displayPhotographerSelectedMedias(medias);  
+  displayPhotographerSelectedMedias(medias);
 };
 
 function sortDate(medias) {
@@ -117,46 +109,73 @@ function sortDate(medias) {
   displayPhotographerSelectedMedias(medias);
 };
 
-  function addLikes(){
+
+  function addLikes(totalLikes){
     const likes = document.querySelectorAll(".mediaLikesIcon");// je cible le span des coeurs
     const allLikesCount = document.getElementById("totalLikesCount");// je cible le total des likes dans le bandeau
+    allLikesCount.innerHTML = totalLikes + `<i class="fas fa-heart"></i>`;
+
     let liked = 0;
 
-    likes.forEach(e => {
+      likes.forEach(like => {
 
         //EVENEMENT AU CLICK
-        e.addEventListener("click", function(){// au click sur l'element
-            const likeCount = e.parentElement.children[0];//creation constante qui cible le nbre de like
+        like.addEventListener("click", function(){// au click sur l'element
+            const likeCount = like.parentElement.children[0];//creation constante qui cible le nbre de like
 
-            if ( liked === 0) {
+            if ( liked === 0 ) {
                 likeCount.textContent++;
-                allLikesCount.textContent++;
+                allLikesCount.innerHTML = `${totalLikes+ 1}<i class="fas fa-heart"></i>`;
                 liked = 1;
             } else  {
-                likeCount.textContent--;
-                allLikesCount.textContent--;
+                likeCount.textContent--
+                allLikesCount.innerHTML = `${totalLikes- 0}<i class="fas fa-heart"></i>`;
                 liked = 0;
             }
         });
 
         //EVENEMENT AU CLAVIER AVEC TOUCHE ENTREE
-        e.addEventListener("keypress", function(){
-            const likeCount = e.parentElement.children[1];
-            
-            if ( liked === 0) {
-              likeCount.textContent =  likeCount+1;
+        like.addEventListener("keypress", function(){
+            const likeCount = like.parentElement.children[1];
+
+            if ( liked === 0 ) {
+              likeCount.textContent++;
               allLikesCount.textContent++;
-              additionalLike = 1;
+              liked = 1;
           } else  {
-              likeCount.textContent =  media.likes;
+              likeCount.textContent--;
               allLikesCount.textContent--;
-              additionalLike = -1;
-          }                
+              liked = 0;
+          }
         });
-    });
-}
+      });
+ }
 
+//  function getMediaLightBox() {
+//   const lightBoxContainer = document.getElementById("lightbox__container");
 
+//   if(image) {
 
-  
+//       const imgLightbox = document.createElement('img');
+//       imgLightbox.setAttribute('class', 'lightbox-img');
+//       imgLightbox.setAttribute("src", `./assets/medias/${photographerSelectedId}/${image}`);
+//       imgLightbox.setAttribute("data-id", `${id}`);
+//       imgLightbox.setAttribute("alt", `${title}`);
+//       lightBoxContainer.appendChild(imgLightbox);
+
+//   } else if(video) {
+
+//       const videoLightbox = document.createElement('video');
+//       videoLightbox.setAttribute('class', 'lightbox-video');
+//       videoLightbox.setAttribute("src", `./assets/medias/${photographerSelectedId}/${video}`);
+//       videoLightbox.setAttribute("data-id", `${id}`);
+//       videoLightbox.setAttribute("alt", `${title}`);
+//       lightBoxContainer.appendChild(videoLightbox);
+      
+//   }
+
+//   return lightBoxContainer;
+
+// }
+
   getSelectedPhotographerData();
