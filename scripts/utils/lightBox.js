@@ -1,12 +1,12 @@
 //launch contact modal
-function displayLightBox(id) {
-    const lightBoxBground = document.getElementById("lightBox");
+function displayLightBox() {
+    const lightBoxBground = document.getElementById("lightbox");
 	lightBoxBground.style.display = "block";
 }
 
 //close contact modal
 function closeLightBox() {
-    const lightBoxBground = document.getElementById("lightBox");
+    const lightBoxBground = document.getElementById("lightbox");
     lightBoxBground.style.display = "none";
 }
 
@@ -20,3 +20,4 @@ function closeLightBoxWitdhKeyboard(e) {
         closeLightBox();
     }
 }
+

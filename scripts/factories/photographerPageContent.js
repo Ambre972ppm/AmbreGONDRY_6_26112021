@@ -43,12 +43,12 @@ function photographerCardFactory(photographer) {
 // FONCTION POUR AFFICHER LE TRAVAIL DU PHOTOGRAPHE SELECTIONNE
 function mediaFactory(media) {
     const { id, title, image, video, likes } = media;
+    const mediaUrl = `./assets/medias/${photographerSelectedId}/${image||video}`;
     
     function getMediaCard() {
         const mediaCard = document.createElement('article');
-
         const mediaLink = document.createElement('a'); // Création du lien vers le profile du photographe
-        mediaLink.setAttribute('onclick', `displayLightBox(${id})`)
+        mediaLink.setAttribute('onClick', `displayLightBox(${id})`);
         mediaLink.setAttribute('alt', 'agrandir l\'aperçu' );
         mediaLink.setAttribute("tabindex", 0);
         mediaCard.appendChild(mediaLink); // Définition du lien comme enfant du container
@@ -81,7 +81,7 @@ function mediaFactory(media) {
         if(image) {
 
             const photographPicture = document.createElement('img');
-            photographPicture.setAttribute("src", `./assets/medias/${photographerSelectedId}/${image}`);
+            photographPicture.setAttribute("src", `${mediaUrl}`);
             photographPicture.setAttribute("data-id", `${id}`);
             photographPicture.setAttribute("alt", `${title}`);
             photographPicture.setAttribute('class', 'photographer-media');
@@ -91,7 +91,7 @@ function mediaFactory(media) {
         } else if(video) {
 
             const photographVideo = document.createElement('video');
-            photographVideo.setAttribute("src", `./assets/medias/${photographerSelectedId}/${video}`);
+            photographVideo.setAttribute("src", `${mediaUrl}`);
             photographVideo.setAttribute("data-id", `${id}`);
             photographVideo.setAttribute("alt", `${title}`);
             photographVideo.setAttribute('class', 'photographer-media');

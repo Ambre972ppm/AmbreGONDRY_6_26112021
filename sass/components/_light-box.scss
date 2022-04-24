@@ -1,5 +1,5 @@
 
-  #lightBox {
+  #lightbox {
     display: none;
     position: fixed;
     z-index: 2;
@@ -85,7 +85,7 @@
     } 
 }
 
-#lightBox button {
+#lightbox button {
   opacity: .8               ;
   transition: 300ms;
   &:hover {

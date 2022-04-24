@@ -16,24 +16,29 @@ function photographerFactory(data) {
         const profilePicture = document.createElement( 'img' ); // création de la photo de profil
         profilePicture.setAttribute("src", picture); // définition de l'image
         profilePicture.setAttribute("alt", `${name}`); // définition du nom de l'image
+        profilePicture.setAttribute("tabindex", 0);
         photographerLink.appendChild(profilePicture); // est l'enfant du lien du profil
 
         const profileName = document.createElement( 'h2' ); // création du nom du profil
         profileName.textContent = name; // on affiche le nom sous forme de texte
+        profileName.setAttribute("tabindex", 0);
         photographerLink.appendChild(profileName); // est l'enfant du lien du profil
 
         const profileLocation = document.createElement( 'h3' ); // création de la localisation du photographe
         profileLocation.textContent = location; // on l'affiche sous forme de texte
+        profileLocation.setAttribute("tabindex", 0);
         photographerLink.appendChild(profileLocation); // est l'enfant du lien
 
         const profileQuote = document.createElement( 'p' ); // création de la citation
         profileQuote.setAttribute('class', "quote");
         profileQuote.textContent = tagline; // qu'on affiche sous forme de texte
+        profileQuote.setAttribute("tabindex", 0);
         photographerLink.appendChild(profileQuote); // est l'enfant du lien
 
         const profileRate = document.createElement( 'p' ); // création du tarif
         profileRate.setAttribute('class', "rate");
         profileRate.textContent = dailyRate; // affichage sous forme de texte
+        profileRate.setAttribute("tabindex", 0);
         photographerLink.appendChild(profileRate); // enfant du lien
 
         return (photograherCard); // on retourne la carte du photographe

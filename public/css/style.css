@@ -108,7 +108,7 @@ form button {
   height: 170px;
 }
 
-#lightBox {
+#lightbox {
   display: none;
   position: fixed;
   z-index: 2;
@@ -196,11 +196,11 @@ form button {
   border: #d3573c;
 }
 
-#lightBox button {
+#lightbox button {
   opacity: 0.8;
   transition: 300ms;
 }
-#lightBox button:hover {
+#lightbox button:hover {
   opacity: 1;
 }
 

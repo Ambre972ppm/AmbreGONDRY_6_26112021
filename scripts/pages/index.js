@@ -5,12 +5,12 @@ async function getPhotographers() {
     
         const photographers = data.photographers;
     
-        //on appelle la fonction qui nous permet d'afficher les photographes
-        displayData(photographers);
+        displayData(photographers);//on appelle la fonction qui nous permet d'afficher les photographes
+
     }
 
-    async function displayData(photographers) {
-        const photographersSection = document.querySelector(".photographer_section"); // on défini la section contenant les photographe
+    async function displayData(photographers) { // affichages des cartes photographes
+        const photographersSection = document.querySelector(".photographer_section"); 
 
         photographers.forEach((photographer) => {
             const photographerModel = photographerFactory(photographer);
