@@ -26,10 +26,6 @@ function getSelectedPhotographerData() {
 
 //Affichage des médias du photographe sélectionné
   function displayPhotographerSelectedMedias(medias) {
-    const allLikes = document.getElementById("photographer-total-like");
-    const allLikesCount = document.createElement('span');
-    allLikesCount.setAttribute('id', 'totalLikesCount');
-    allLikes.appendChild(allLikesCount);
     let totalLikes = 0;
 
     medias.forEach((media) => {
@@ -38,7 +34,7 @@ function getSelectedPhotographerData() {
         const mediaCard = mediaModel.getMediaCard();
         mediaSection.appendChild(mediaCard);
 
-        totalLikes += parseInt(media.likes);
+        totalLikes = totalLikes + media.likes;
       }
     })
     addLikes(totalLikes);
@@ -109,42 +105,43 @@ function sortDate(medias) {
   function addLikes(totalLikes){
     const likes = document.querySelectorAll(".mediaLikesIcon");// je cible le span des coeurs
     const allLikesCount = document.getElementById("totalLikesCount");// je cible le total des likes dans le bandeau
-    allLikesCount.innerHTML = totalLikes + `<i class="fas fa-heart"></i>`;
+    allLikesCount.innerHTML = totalLikes;
 
-    let liked = 0;
+    let hasLikedArray = [];
 
-    likes.forEach((like) => {
+    for(let i = 0; i < likes.length; i++) {
+      hasLikedArray.push(0);
+      console.log(hasLikedArray);
       //EVENEMENT AU CLICK
-      like.addEventListener("click", function(){// au click sur l'element
-        const likeCount = like.parentElement.children[0];//creation constante qui cible le nbre de like
+      likes[i].addEventListener("click", function(){// au click sur l'element
+        const likeCount = likes[i].parentElement.children[0];//creation constante qui cible le nbre de like
 
-        if ( liked === 0 ) {
+        if ( hasLikedArray[i] === 0 ) {
             likeCount.textContent++;
-            allLikesCount.innerHTML = `${totalLikes+ 1}<i class="fas fa-heart"></i>`;
-            liked = 1;
+            allLikesCount.textContent++;
+            hasLikedArray[i] = 1;
         } else  {
             likeCount.textContent--
-            allLikesCount.innerHTML = `${totalLikes- 0}<i class="fas fa-heart"></i>`;
-            liked = 0;
+            allLikesCount.textContent--;
+            hasLikedArray[i] = 0;
         }
      });
 
       //EVENEMENT AU CLAVIER AVEC TOUCHE ENTREE
-      like.addEventListener("keypress", function(){
-          const likeCount = like.parentElement.children[1];
+      likes[i].addEventListener("keypress", function(){
+          const likeCount = likes[i].parentElement.children[0];
 
-          if ( liked === 0 ) {
+          if ( hasLikedArray[i] === 0 ) {
             likeCount.textContent++;
             allLikesCount.textContent++;
-            liked = 1;
+            hasLikedArray[i] = 1;
         } else  {
             likeCount.textContent--;
             allLikesCount.textContent--;
-            liked = 0;
+            hasLikedArray[i] = 0;
         }
-      });
-    })
-    
+      });   
+    }
   }
  
 

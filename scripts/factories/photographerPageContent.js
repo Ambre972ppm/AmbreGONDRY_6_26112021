@@ -69,13 +69,13 @@ function mediaFactory(media) {
 
         const mediaLikesCount = document.createElement('span');
         mediaLikesCount.setAttribute('class', 'mediaLikes');
-        mediaLikesCount.setAttribute = ('aria-label', 'likes')
+        mediaLikesCount.setAttribute('aria-label', 'likes')
         mediaLikesCount.textContent = likes;
         mediaLikesContainer.appendChild(mediaLikesCount);
 
         const mediaLikesIcon = document.createElement('i');
-        mediaLikesIcon.setAttribute('class', 'fas fa-heart mediaLikesIcon');
-        mediaLikesIcon.setAttribute = ('aria-label', 'heart icon');
+        mediaLikesIcon.classList.add('fas', 'fa-heart', 'mediaLikesIcon');
+        mediaLikesIcon.setAttribute('aria-label', 'heart icon');
         mediaLikesContainer.appendChild(mediaLikesIcon);
 
         if(image) {
