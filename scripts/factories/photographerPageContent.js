@@ -76,6 +76,7 @@ function mediaFactory(media) {
         const mediaLikesIcon = document.createElement('i');
         mediaLikesIcon.classList.add('fas', 'fa-heart', 'mediaLikesIcon');
         mediaLikesIcon.setAttribute('aria-label', 'heart icon');
+        mediaLikesIcon.setAttribute("tabindex", 0);
         mediaLikesContainer.appendChild(mediaLikesIcon);
 
         if(image) {

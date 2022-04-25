@@ -1,5 +1,5 @@
 //launch contact modal
-function displayLightBox() {
+function displayLightBox(                   ) {
     const lightBoxBground = document.getElementById("lightbox");
 	lightBoxBground.style.display = "block";
 }
@@ -16,7 +16,7 @@ window.addEventListener('keyup', (e) => {
 })
 
 function closeLightBoxWitdhKeyboard(e) {
-    if (document.getElementById("lightBox").style.display ="block" && e.key === "Escape") {
+    if (document.getElementById("lightbox").style.display ="block" && e.key === "Escape") {
         closeLightBox();
     }
 }
