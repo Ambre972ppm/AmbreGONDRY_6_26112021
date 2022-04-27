@@ -44,11 +44,11 @@ function photographerCardFactory(photographer) {
 function mediaFactory(media) {
     const { id, title, image, video, likes } = media;
     const mediaUrl = `./assets/medias/${photographerSelectedId}/${image||video}`;
-    
+  
     function getMediaCard() {
         const mediaCard = document.createElement('article');
         const mediaLink = document.createElement('a'); // Création du lien vers le profile du photographe
-        mediaLink.setAttribute('onClick', `displayLightBox(${id})`);
+        mediaLink.setAttribute('onClick', `displayLightBox(${media})`);
         mediaLink.setAttribute('alt', 'agrandir l\'aperçu' );
         mediaLink.setAttribute("tabindex", 0);
         mediaCard.appendChild(mediaLink); // Définition du lien comme enfant du container

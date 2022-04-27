@@ -111,7 +111,6 @@ function sortDate(medias) {
 
     for(let i = 0; i < likes.length; i++) {
       hasLikedArray.push(0);
-      console.log(hasLikedArray);
       //EVENEMENT AU CLICK
       likes[i].addEventListener("click", function(){// au click sur l'element
         const likeCount = likes[i].parentElement.children[0];//creation constante qui cible le nbre de like

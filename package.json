@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "sass": "sass --watch ./sass/style.scss:public/css/style.css",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint --max-warnings=0 ."
+  },
+  "gitHooks": {
+    "pre-push": "npm run lint"
   },
   "repository": {
     "type": "git",
@@ -16,5 +20,10 @@
   "bugs": {
     "url": "https://github.com/Ambre972ppm/AmbreGONDRY_6_26112021/issues"
   },
-  "homepage": "https://github.com/Ambre972ppm/AmbreGONDRY_6_26112021#readme"
+  "homepage": "https://github.com/Ambre972ppm/AmbreGONDRY_6_26112021#readme",
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^8.14.0",
+    "yorkie": "^2.0.0"
+  }
 }
