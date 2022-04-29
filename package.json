@@ -7,9 +7,6 @@
     "sass": "sass --watch ./sass/style.scss:public/css/style.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "gitHooks": {
-    "pre-push": "npm run lint"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Ambre972ppm/AmbreGONDRY_6_26112021.git"
