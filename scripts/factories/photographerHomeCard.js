@@ -1,47 +1,47 @@
+// AFFICHER LES CARTES PHOTOGRAPHES
 function photographerFactory(data) {
     const { name, portrait, id, city, country, tagline, price } = data;
 
     const picture = `./assets/photographers/${portrait}`;
     const location = `${city}, ${country}`;
     const dailyRate =  `${price}€/jour`;
-
-
+    // CREATION DE LA CARTE PHOTOGRAPHE
     function getUserCardDOM() {
-        const photograherCard = document.createElement( 'aside' ); // création du container
+        const photograherCard = document.createElement( 'aside' ); // Création du container du média
 
-        const photographerLink = document.createElement('a'); // création du lien vers le profile du photographe
-        photographerLink.setAttribute('href', `./photographer.html?id=${id}`); // définition de l'url
-        photograherCard.appendChild(photographerLink); // définition du lien comme enfant du container
+        const photographerLink = document.createElement('a'); // Création du lien vers le profile du photographe
+        photographerLink.setAttribute('href', `./photographer.html?id=${id}`); 
+        photograherCard.appendChild(photographerLink); 
 
-        const profilePicture = document.createElement( 'img' ); // création de la photo de profil
-        profilePicture.setAttribute("src", picture); // définition de l'image
-        profilePicture.setAttribute("alt", `${name}`); // définition du nom de l'image
+        const profilePicture = document.createElement( 'img' ); // Création de la photo de profil
+        profilePicture.setAttribute("src", picture); 
+        profilePicture.setAttribute("alt", `Photographe ${name}`); 
         profilePicture.setAttribute("tabindex", 0);
-        photographerLink.appendChild(profilePicture); // est l'enfant du lien du profil
+        photographerLink.appendChild(profilePicture); 
 
-        const profileName = document.createElement( 'h2' ); // création du nom du profil
-        profileName.textContent = name; // on affiche le nom sous forme de texte
+        const profileName = document.createElement( 'h2' ); // Création du nom du profil
+        profileName.textContent = name; 
         profileName.setAttribute("tabindex", 0);
-        photographerLink.appendChild(profileName); // est l'enfant du lien du profil
+        photographerLink.appendChild(profileName); 
 
-        const profileLocation = document.createElement( 'h3' ); // création de la localisation du photographe
-        profileLocation.textContent = location; // on l'affiche sous forme de texte
+        const profileLocation = document.createElement( 'h3' ); // Création de la localisation du photographe
+        profileLocation.textContent = location; 
         profileLocation.setAttribute("tabindex", 0);
-        photographerLink.appendChild(profileLocation); // est l'enfant du lien
+        photographerLink.appendChild(profileLocation); 
 
-        const profileQuote = document.createElement( 'p' ); // création de la citation
+        const profileQuote = document.createElement( 'p' ); // Création de la citation
         profileQuote.setAttribute('class', "quote");
-        profileQuote.textContent = tagline; // qu'on affiche sous forme de texte
+        profileQuote.textContent = tagline; 
         profileQuote.setAttribute("tabindex", 0);
-        photographerLink.appendChild(profileQuote); // est l'enfant du lien
+        photographerLink.appendChild(profileQuote);
 
-        const profileRate = document.createElement( 'p' ); // création du tarif
+        const profileRate = document.createElement( 'p' ); // Création du tarif
         profileRate.setAttribute('class', "rate");
-        profileRate.textContent = dailyRate; // affichage sous forme de texte
+        profileRate.textContent = dailyRate; 
         profileRate.setAttribute("tabindex", 0);
-        photographerLink.appendChild(profileRate); // enfant du lien
+        photographerLink.appendChild(profileRate); 
 
-        return (photograherCard); // on retourne la carte du photographe
+        return (photograherCard); // On retourne la carte du photographe
     }
     return { name, picture, tagline, location,  getUserCardDOM }
 }

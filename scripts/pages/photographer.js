@@ -119,10 +119,12 @@ function sortDate(medias) {
             likeCount.textContent++;
             allLikesCount.textContent++;
             hasLikedArray[i] = 1;
+            likes[i].style.color = "#901c1c";
         } else  {
             likeCount.textContent--
             allLikesCount.textContent--;
             hasLikedArray[i] = 0;
+            likes[i].style.color = "#901c1c77";
         }
      });
 

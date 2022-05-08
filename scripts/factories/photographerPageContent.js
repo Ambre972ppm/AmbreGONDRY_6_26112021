@@ -1,7 +1,7 @@
-// FONCTION POUR AFFICHER L'IDENTITE DU PHOTOGRAPHE SELECTIONNE
+//AFFICHER L'IDENTITE DU PHOTOGRAPHE SELECTIONNE
 function photographerCardFactory(photographer) {
     const { name, portrait, city, country, tagline, price } = photographer;
-   
+    //CREATION DE LA CARTE DU PHOTOGRAPHE
     function getPhotographerCard() {
         const dailyRate = document.getElementById("photographer-daily-rate");
         dailyRate.innerHTML = `<p>${price}€ / jour </p>`
@@ -9,98 +9,99 @@ function photographerCardFactory(photographer) {
         const modaleTitle = document.querySelector('.photographer_name'); 
         modaleTitle.textContent = name; // Affiche le nom du photographe dans la modale de contact
 
-        const photographIntroduction = document.getElementById('photograph-introduction');
+        const photographIntroduction = document.getElementById('photograph-introduction'); // On récupère le container pour l'introduction du photographe
 
-        const profileName = document.createElement( 'h2' ); // Création du nom du profil
-        profileName.textContent = name; // On affiche le nom sous forme de texte
+        const profileName = document.createElement( 'h1' ); // Création du nom du profil
+        profileName.textContent = name;
         profileName.setAttribute("tabindex", 0);
-        photographIntroduction.appendChild(profileName); // Est l'enfant du lien du profil
+        photographIntroduction.appendChild(profileName);
               
-        const profileLocation = document.createElement( 'h3' ); // Création de la localisation du photographe
-        profileLocation.textContent = `${city}, ${country}`; // On l'affiche sous forme de texte
+        const profileLocation = document.createElement( 'h2' ); // Création de la localisation du photographe
+        profileLocation.textContent = `${city}, ${country}`;
         profileLocation.setAttribute("tabindex", 0);
-        photographIntroduction.appendChild(profileLocation); // Est l'enfant du lien
+        photographIntroduction.appendChild(profileLocation);
               
         const profileQuote = document.createElement( 'p' ); // Création de la citation
         profileQuote.setAttribute('class', "quote");
-        profileQuote.textContent = tagline; // On affiche sous forme de texte
+        profileQuote.textContent = tagline;
         profileQuote.setAttribute("tabindex", 0);
-        photographIntroduction.appendChild(profileQuote); // Est l'enfant du lien
+        photographIntroduction.appendChild(profileQuote);
       
         const profilePicture = document.createElement( 'img' ); // Création de la photo de profil
-        profilePicture.setAttribute("src", `./assets/photographers/${portrait}`); // Définition de l'image
-        profilePicture.setAttribute("alt", `${name}`); // Définition du nom de l'image
+        profilePicture.setAttribute("src", `./assets/photographers/${portrait}`);
+        profilePicture.setAttribute("alt", `${name}`);
         profilePicture.setAttribute("tabindex", 0);
-        photographIntroduction.appendChild(profilePicture); // Est l'enfant du lien du profil
+        photographIntroduction.appendChild(profilePicture);
         
-        return (photographIntroduction);
+        return (photographIntroduction); // On retourne l'entête du photographe
     }
 
     return {getPhotographerCard}
       
 }
   
-// FONCTION POUR AFFICHER LE TRAVAIL DU PHOTOGRAPHE SELECTIONNE
+//AFFICHER LE TRAVAIL DU PHOTOGRAPHE SELECTIONNE
 function mediaFactory(media) {
     const { id, title, image, video, likes } = media;
     const mediaUrl = `./assets/medias/${photographerSelectedId}/${image||video}`;
-  
+    //CREATION DE LA CARTE MEDIA
     function getMediaCard() {
         const mediaCard = document.createElement('article');
-        const mediaLink = document.createElement('a'); // Création du lien vers le profile du photographe
-        mediaLink.setAttribute('onClick', `displayLightBox(${media})`);
+        const mediaLink = document.createElement('a');
+
+        mediaLink.setAttribute('onclick', `displayLightBox('${JSON.stringify(media)}')`); // Appel de la fonction qui ouvre la lightbox
         mediaLink.setAttribute('alt', 'agrandir l\'aperçu' );
         mediaLink.setAttribute("tabindex", 0);
-        mediaCard.appendChild(mediaLink); // Définition du lien comme enfant du container
+        mediaCard.appendChild(mediaLink); 
 
-        const mediaFigcaption = document.createElement('figcaption');
+        const mediaFigcaption = document.createElement('figcaption'); // Création de la description du media
         mediaFigcaption.setAttribute('class', "media-figcaption");
         mediaCard.appendChild(mediaFigcaption);
 
-        const mediaName = document.createElement( 'h3' ); // Création du nom du profil
-        mediaName.textContent = title; // on affiche le nom sous forme de texte
+        const mediaName = document.createElement( 'h2' ); // Création du nom du profil
+        mediaName.textContent = title;
         mediaName.setAttribute("tabindex", 0);
-        mediaFigcaption.appendChild(mediaName); // est l'enfant du lien du profil
+        mediaFigcaption.appendChild(mediaName);
 
-        const mediaLikesContainer = document.createElement('div');// container des likes (nombre + icone)
+        const mediaLikesContainer = document.createElement('div'); // Création du container des likes (nombre + icone)
         mediaLikesContainer.setAttribute('class', 'mediaLikesContainer');
         mediaLikesContainer.setAttribute("tabindex", 0);
         mediaFigcaption.appendChild(mediaLikesContainer);
 
-        const mediaLikesCount = document.createElement('span');
+        const mediaLikesCount = document.createElement('span'); // Création du nombre de likes
         mediaLikesCount.setAttribute('class', 'mediaLikes');
         mediaLikesCount.setAttribute('aria-label', 'likes')
         mediaLikesCount.textContent = likes;
         mediaLikesContainer.appendChild(mediaLikesCount);
 
-        const mediaLikesIcon = document.createElement('i');
+        const mediaLikesIcon = document.createElement('i'); // Création de l'icône de like
         mediaLikesIcon.classList.add('fas', 'fa-heart', 'mediaLikesIcon');
         mediaLikesIcon.setAttribute('aria-label', 'heart icon');
         mediaLikesIcon.setAttribute("tabindex", 0);
         mediaLikesContainer.appendChild(mediaLikesIcon);
 
-        if(image) {
+        if(image) { // Si c'est une image 
 
-            const photographPicture = document.createElement('img');
+            const photographPicture = document.createElement('img'); // Création de l'image
             photographPicture.setAttribute("src", `${mediaUrl}`);
             photographPicture.setAttribute("data-id", `${id}`);
-            photographPicture.setAttribute("alt", `${title}`);
+            photographPicture.setAttribute("alt", `photo nommée ${title}`);
             photographPicture.setAttribute('class', 'photographer-media');
             photographPicture.setAttribute("tabindex", 0);
             mediaLink.appendChild(photographPicture);
             
         } else if(video) {
 
-            const photographVideo = document.createElement('video');
+            const photographVideo = document.createElement('video'); // Création de la vidéo
             photographVideo.setAttribute("src", `${mediaUrl}`);
             photographVideo.setAttribute("data-id", `${id}`);
-            photographVideo.setAttribute("alt", `${title}`);
+            photographVideo.setAttribute("alt", `vidéo nommée ${title}`);
             photographVideo.setAttribute('class', 'photographer-media');
             photographVideo.setAttribute("tabindex", 0);
             mediaLink.appendChild(photographVideo);
 
         }
-            return mediaCard;
+            return mediaCard; // On retourne la carte du media
     }
 
     return {getMediaCard}

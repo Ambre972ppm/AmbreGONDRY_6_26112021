@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Ambre972ppm/AmbreGONDRY_6_26112021/issues"
   },
-  "homepage": "https://github.com/Ambre972ppm/AmbreGONDRY_6_26112021#readme"
+  "homepage": "https://github.com/Ambre972ppm/AmbreGONDRY_6_26112021#readme",
+  "devDependencies": {
+    "eslint": "^8.15.0"
+  }
 }

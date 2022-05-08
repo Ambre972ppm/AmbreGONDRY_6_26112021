@@ -19,10 +19,19 @@
         object-fit: cover; 
         filter: drop-shadow(-1px 6px 8px #525252);
     }
+    @media(max-width: 991px) {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        padding: 1rem;
+        margin: 0;
+        img {
+            display: none;
+        }
+    }
 }
 
 #photograph-introduction {
-    h2 {
+    h1 {
         color: $color-secondary;
         font-size: 64px;
         font-style: normal;
@@ -36,13 +45,13 @@
     }
 }
 
-#photograph-introduction h3 {
+#photograph-introduction h2 {
     color: $color-primary;
     font-size: 24px;
     font-weight: 400;
 }
 
-#photograph-medias-section h3, .pictureLikes{
+#photograph-medias-section h2, .pictureLikes{
     color: $color-primary;
     font-size: 17px;
     font-weight: 400;
@@ -67,8 +76,7 @@
 }
 
 #photograph-medias-section {
-    margin-top: 20px;
-    margin: 100px;
+    padding: 100px;
 }
 
 #sortBy {
@@ -92,17 +100,24 @@
     grid-template-columns: 1fr 1fr 1fr;
     gap: 2rem;
     margin-top: 80px;
+    @media(max-width: 991px) {
+        grid-template-columns: 1fr 1fr;
+    }
+    article {
+        height: 400px ;
+        width: 100%;
+    }
     img {
-        height: 16em;
-        width: 18em;
+        width: 100%;
+        height: 85%;
         object-fit: cover;
         background: #C4C4C4;
         border-radius: 5px;
         cursor: pointer;
     }
     video {
-        height: 16em;
-        width: 18em;
+        width: 100%;
+        height: 85%;
         object-fit: cover;
         background: #C4C4C4;
         border-radius: 5px;
@@ -115,7 +130,10 @@ figcaption {
     align-items: center;
     color: $color-primary;
     .mediaLikesContainer {
-        cursor: pointer;
+        .mediaLikesIcon {
+            cursor: pointer;
+            color: #901c1c77;
+        }
     }
  
 }
