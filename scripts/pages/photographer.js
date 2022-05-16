@@ -29,37 +29,66 @@ function displayPhotographerSelectedMedias(medias) {
   let totalLikes = 0;
   let mediaGallery = [];
   const lightboxList = document.querySelector(".lightbox_medias-list");
+  lightboxList.innerHTML = "";
 
   medias.forEach((media) => {
     if(media.photographerId == photographerSelectedId) {
       mediaGallery.push(media);
-// mettre la galleri$y dans le local storage
-      const lightboxItem = document.createElement("figure");
-      lightboxList.appendChild(lightboxItem);
-      
-      if(media.image) {
-        const lightboxMedia = document.createElement("img");
-        lightboxMedia.setAttribute("src", `./assets/medias/${photographerSelectedId}/${media.image}`);
-        lightboxMedia.setAttribute("alt", `${media.title}`);
-        lightboxItem.appendChild(lightboxMedia);
-      } else if(media.video) {
-        const lightboxMedia = document.createElement("video");
-        lightboxMedia.setAttribute("src", `./assets/medias/${photographerSelectedId}/${media.video}`);
-        lightboxItem.appendChild(lightboxMedia);
-      }
-
-      const mediaModel = mediaFactory(media);
-      const mediaCard = mediaModel.getMediaCard();
-      mediaSection.appendChild(mediaCard);
-
-      totalLikes = totalLikes + media.likes;
     }
-
   })
 
+  mediaGallery.forEach((media, index) => {
+      displayMediaCard(media);
+      handleMedia(media, lightboxList, photographerSelectedId, index);
+
+      totalLikes += media.likes;
+  })
   console.log(lightboxList);
 
   addLikes(totalLikes);
+}
+
+function displayMediaCard(media) {
+  const mediaModel = mediaFactory(media);
+  const mediaCard = mediaModel.getMediaCard();
+  mediaSection.appendChild(mediaCard);
+}
+
+function handleMedia(media, lightboxList, photographerSelectedId, index) {
+  const lightboxItem = document.createElement("figure");
+  lightboxItem.setAttribute("class", 'lightbox__item');
+  lightboxItem.setAttribute("id", media.id);
+  lightboxItem.setAttribute("data-index", index);
+
+  lightboxList.appendChild(lightboxItem);
+
+  if(media.image) {
+    handleImage(media, lightboxItem, photographerSelectedId, index);
+  } else {
+    handleVideo(media, lightboxItem, photographerSelectedId, index);
+  }
+}
+
+function handleImage(media, lightboxItem, photographerSelectedId, index) {
+    const lightboxMedia = document.createElement("img");
+    lightboxMedia.setAttribute("src", `./assets/medias/${photographerSelectedId}/${media.image}`);
+    lightboxMedia.setAttribute("class", 'lightbox__image');
+    lightboxMedia.setAttribute("alt", `${media.title}`);
+    lightboxMedia.setAttribute("data-id", media.id);
+    lightboxItem.appendChild(lightboxMedia);
+}
+
+function handleVideo(media, lightboxItem, photographerSelectedId, index) {
+  if(media.video) {
+    const lightboxMedia = document.createElement("video");
+    lightboxMedia.setAttribute("src", `./assets/medias/${photographerSelectedId}/${media.video}`);
+    lightboxMedia.setAttribute("class", 'lightbox__video');
+    lightboxMedia.setAttribute("controls", true);
+    lightboxMedia.setAttribute("autoplay", true);
+    lightboxMedia.setAttribute("alt", `${media.title}`);
+    lightboxMedia.setAttribute("data-id", media.id);
+    lightboxItem.appendChild(lightboxMedia);
+  }
 }
   
 // Gestion du tri selon le filtre sélectionné

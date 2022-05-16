@@ -1,42 +1,24 @@
 //AFFICHER LA LIGHTBOX
-function displayLightBox(mediaStr) {
+function openLightbox(id) {
   const lightBoxBground = document.getElementById("lightbox");
+  let lightboxItems = document.getElementsByClassName("lightbox__item");
+
   lightBoxBground.style.display = "block";
-  const media = JSON.parse(mediaStr);
-  let currentMedia = media;
-  console.log(media)
 
-  //TODO passer en current media le media sur lequel on clique
-    try {
-        const { id, title, image, video } = media;
-        const imageLightbox = document.querySelector(".lightbox__img");
-        const videoLightbox = document.querySelector(".lightbox__video");
-        const titleLightbox = document.querySelector(".lightbox__title");        
+  let currentMediaId = id;
 
-        if (image && image !== "") {
-            imageLightbox.style.display= "block";
-            imageLightbox.setAttribute("src", `./assets/medias/${photographerSelectedId}/${image}`);
-            imageLightbox.setAttribute("data-id", `${id}`);
-            imageLightbox.setAttribute("alt", `${title}`);
-            imageLightbox.setAttribute("tabindex", 0);
-            titleLightbox.textContent = title;
-            titleLightbox.setAttribute("tabindex", 0);
-            videoLightbox.style.display = "none";
-
-        } else if (video && video !== "") {
-            videoLightbox.style.display= "block";
-            videoLightbox.setAttribute("src", `./assets/medias/${photographerSelectedId}/${video}`);
-            videoLightbox.setAttribute("data-id", `${id}`);
-            videoLightbox.setAttribute("alt", `${title}`);
-            videoLightbox.setAttribute("tabindex", 0);
-            titleLightbox.textContent = title;
-            titleLightbox.setAttribute("tabindex", 0);
-            imageLightbox.style.display = "none";
-
-        }
-    } catch (error) {
-
+  for (let media of lightboxItems) {
+    if(media.id == currentMediaId) {
+      media.style.display = "block";
+      currentMedia = media;
+      localStorage.setItem("currentMediaIndex", media.dataset.index);
+    } else {
+      media.style.display = "none";
     }
+  };
+
+  currentMedia.scrollIntoView();
+
 }
 
 //fermer la modale lightbox
@@ -59,21 +41,42 @@ function closeLightBoxWitdhKeyboard(e) {
   }
 }
 
-//Changer de média
-function mediaLightbox() {
-  // let mediaGallery = [];
-  // const medias = document.querySelectorAll(".lightbox__media");
-  // mediaGallery.push(medias);
+function previousMedia() {
+  let lightboxItems = document.getElementsByClassName("lightbox__item");
+  let currentMediaIndex = localStorage.getItem("currentMediaIndex");
+  let newCurrentMediaIndex = parseInt(currentMediaIndex) -1;
 
-  // console.log(mediaGallery);
-
+  if(newCurrentMediaIndex < 0) {
+    newCurrentMediaIndex = lightboxItems.length -1;
   }
 
+  localStorage.setItem("currentMediaIndex", newCurrentMediaIndex);
+  switchMedia();
+}
+
+function nextMedia() {
+  let lightboxItems = document.getElementsByClassName("lightbox__item");
+  let currentMediaIndex = localStorage.getItem("currentMediaIndex");
+  let newCurrentMediaIndex = parseInt(currentMediaIndex) +1;
+
+  if(newCurrentMediaIndex >= lightboxItems.length) {
+    newCurrentMediaIndex = 0;
+  }
+
+  localStorage.setItem("currentMediaIndex", newCurrentMediaIndex);
+  switchMedia();
+}
+
 function switchMedia() {
-    mediaLightbox(mediaIndex += n);
-}
+  let lightboxItems = document.getElementsByClassName("lightbox__item");
+  for (let media of lightboxItems) {
+    if(media.dataset.index == localStorage.getItem("currentMediaIndex")) {
+      media.style.display = "block";
+      currentMedia = media;
+    } else {
+      media.style.display = "none";
+    }
+  };
 
-function currentMedia() {
-    mediaLightbox(mediaIndex = n);
+  currentMedia.scrollIntoView();
 }
-
