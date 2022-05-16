@@ -1,38 +1,38 @@
 //launch contact modal
 function displayModal() {
-    const modalBground = document.getElementById("modal_bground");
-	modalBground.style.display = "block";
+  const modalBground = document.getElementById("modal_bground");
+  modalBground.style.display = "block";
 }
 
 //close contact modal
 function closeModal() {
-    const modalBground = document.getElementById("modal_bground");
-    modalBground.style.display = "none";
+  const modalBground = document.getElementById("modal_bground");
+  modalBground.style.display = "none";
 }
 
 //close contact modal width keyboard
 window.addEventListener('keyup', (e) => {
-    closeModalWitdhKeyboard(e);
+  closeModalWitdhKeyboard(e);
 })
 
 function closeModalWitdhKeyboard(e) {
-    if (document.getElementById("modal_bground").style.display ="block" && e.key === "Escape") {
-        closeModal();
-    }
+  if (document.getElementById("modal_bground").style.display ="block" && e.key === "Escape") {
+    closeModal();
+  }
 }
 
 // sends data filled in the form in the local storage and in the console
 const contactForm = document.getElementById("contact_modal-form");
 contactForm.addEventListener("submit", function(e) {
-    e.preventDefault();
-    let contact = {
-        firstName: firstName.value,
-        lastName: lastName.value,
-        email: email.value,
-        message: message.value,
-    };
-    localStorage.setItem("contact", JSON.stringify(contact));
-    console.log(firstName.value, lastName.value, email.value, message.value);
+  e.preventDefault();
+  let contact = {
+    firstName: firstName.value,
+    lastName: lastName.value,
+    email: email.value,
+    message: message.value,
+  };
+  localStorage.setItem("contact", JSON.stringify(contact));
+  console.log(firstName.value, lastName.value, email.value, message.value);
     
-    closeModal();  
+  closeModal();  
 });

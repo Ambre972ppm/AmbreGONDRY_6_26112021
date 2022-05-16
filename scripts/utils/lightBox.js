@@ -1,34 +1,38 @@
 //AFFICHER LA LIGHTBOX
 function displayLightBox(mediaStr) {
-  try {
-    const media = JSON.parse(mediaStr);
-    const { id, title, image, video } = media;
-    const lightBoxBground = document.getElementById("lightbox");
-    const imageLightbox = document.querySelector(".lightbox__img");
-    const videoLightbox = document.querySelector(".lightbox__video");
-    const titleLightbox = document.querySelector(".lightbox__title");
+const media = JSON.parse(mediaStr);
 
-    lightBoxBground.style.display = "block";
+    try {
+        const { id, title, image, video } = media;
+        const lightBoxBground = document.getElementById("lightbox");
+        const imageLightbox = document.querySelector(".lightbox__img");
+        const videoLightbox = document.querySelector(".lightbox__video");
+        const titleLightbox = document.querySelector(".lightbox__title");
 
-    if (image && image !== "") {
-      imageLightbox.setAttribute("src", `./assets/medias/${photographerSelectedId}/${image}`);
-      imageLightbox.setAttribute("data-id", `${id}`);
-      imageLightbox.setAttribute("alt", `${title}`);
-      imageLightbox.setAttribute("tabindex", 0);
-      titleLightbox.textContent = title;
-      titleLightbox.setAttribute("tabindex", 0);
-      videoLightbox.style.display = "none";
+        lightBoxBground.style.display = "block";
 
-    } else if (video && video !== "") {
-      videoLightbox.setAttribute("src", `./assets/medias/${photographerSelectedId}/${video}`);
-      videoLightbox.setAttribute("data-id", `${id}`);
-      videoLightbox.setAttribute("alt", `${title}`);
-      videoLightbox.setAttribute("tabindex", 0);
-      titleLightbox.textContent = title;
-      titleLightbox.setAttribute("tabindex", 0);
-      imageLightbox.style.display = "none";
-    }
-  } catch (error) {}
+        if (image && image !== "") {
+            imageLightbox.style.display= "block";
+            imageLightbox.setAttribute("src", `./assets/medias/${photographerSelectedId}/${image}`);
+            imageLightbox.setAttribute("data-id", `${id}`);
+            imageLightbox.setAttribute("alt", `${title}`);
+            imageLightbox.setAttribute("tabindex", 0);
+            titleLightbox.textContent = title;
+            titleLightbox.setAttribute("tabindex", 0);
+            videoLightbox.style.display = "none";
+
+        } else if (video && video !== "") {
+            videoLightbox.style.display= "block";
+            videoLightbox.setAttribute("src", `./assets/medias/${photographerSelectedId}/${video}`);
+            videoLightbox.setAttribute("data-id", `${id}`);
+            videoLightbox.setAttribute("alt", `${title}`);
+            videoLightbox.setAttribute("tabindex", 0);
+            titleLightbox.textContent = title;
+            titleLightbox.setAttribute("tabindex", 0);
+            imageLightbox.style.display = "none";
+
+        }
+    } catch (error) {}
 }
 
 //fermer la modale lightbox
