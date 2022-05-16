@@ -19,6 +19,10 @@ function openLightbox(id) {
 
   currentMedia.scrollIntoView();
 
+  //fermer la modale lightbox à l'aide du clavier
+  window.addEventListener("keyup", (e) => {
+  closeLightBoxWitdhKeyboard(e);
+});
 }
 
 //fermer la modale lightbox
@@ -27,10 +31,7 @@ function closeLightBox() {
   lightBoxBground.style.display = "none";
 }
 
-//fermer la modale lightbox à l'aide du clavier
-window.addEventListener("keyup", (e) => {
-  closeLightBoxWitdhKeyboard(e);
-});
+
 
 function closeLightBoxWitdhKeyboard(e) {
   if (
@@ -69,8 +70,10 @@ function nextMedia() {
 
 function switchMedia() {
   let lightboxItems = document.getElementsByClassName("lightbox__item");
+  let currentMediaIndex = localStorage.getItem("currentMediaIndex");
+
   for (let media of lightboxItems) {
-    if(media.dataset.index == localStorage.getItem("currentMediaIndex")) {
+    if(media.dataset.index == currentMediaIndex) {
       media.style.display = "block";
       currentMedia = media;
     } else {

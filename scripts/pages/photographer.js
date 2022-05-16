@@ -69,7 +69,7 @@ function handleMedia(media, lightboxList, photographerSelectedId, index) {
   }
 }
 
-function handleImage(media, lightboxItem, photographerSelectedId, index) {
+function handleImage(media, lightboxItem, photographerSelectedId) {
     const lightboxMedia = document.createElement("img");
     lightboxMedia.setAttribute("src", `./assets/medias/${photographerSelectedId}/${media.image}`);
     lightboxMedia.setAttribute("class", 'lightbox__image');
@@ -78,7 +78,7 @@ function handleImage(media, lightboxItem, photographerSelectedId, index) {
     lightboxItem.appendChild(lightboxMedia);
 }
 
-function handleVideo(media, lightboxItem, photographerSelectedId, index) {
+function handleVideo(media, lightboxItem, photographerSelectedId) {
   if(media.video) {
     const lightboxMedia = document.createElement("video");
     lightboxMedia.setAttribute("src", `./assets/medias/${photographerSelectedId}/${media.video}`);
