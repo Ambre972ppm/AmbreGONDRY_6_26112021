@@ -27,16 +27,38 @@ function displayPhotographerSelected(photographers) {
 //Affichage des médias du photographe sélectionné
 function displayPhotographerSelectedMedias(medias) {
   let totalLikes = 0;
+  let mediaGallery = [];
+  const lightboxList = document.querySelector(".lightbox_medias-list");
 
   medias.forEach((media) => {
     if(media.photographerId == photographerSelectedId) {
+      mediaGallery.push(media);
+// mettre la galleri$y dans le local storage
+      const lightboxItem = document.createElement("figure");
+      lightboxList.appendChild(lightboxItem);
+      
+      if(media.image) {
+        const lightboxMedia = document.createElement("img");
+        lightboxMedia.setAttribute("src", `./assets/medias/${photographerSelectedId}/${media.image}`);
+        lightboxMedia.setAttribute("alt", `${media.title}`);
+        lightboxItem.appendChild(lightboxMedia);
+      } else if(media.video) {
+        const lightboxMedia = document.createElement("video");
+        lightboxMedia.setAttribute("src", `./assets/medias/${photographerSelectedId}/${media.video}`);
+        lightboxItem.appendChild(lightboxMedia);
+      }
+
       const mediaModel = mediaFactory(media);
       const mediaCard = mediaModel.getMediaCard();
       mediaSection.appendChild(mediaCard);
 
       totalLikes = totalLikes + media.likes;
     }
+
   })
+
+  console.log(lightboxList);
+
   addLikes(totalLikes);
 }
   
