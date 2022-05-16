@@ -1,15 +1,17 @@
 //AFFICHER LA LIGHTBOX
 function displayLightBox(mediaStr) {
-const media = JSON.parse(mediaStr);
+  const lightBoxBground = document.getElementById("lightbox");
+  lightBoxBground.style.display = "block";
+  const media = JSON.parse(mediaStr);
+  let currentMedia = media;
+  console.log(media)
 
+  //TODO passer en current media le media sur lequel on clique
     try {
         const { id, title, image, video } = media;
-        const lightBoxBground = document.getElementById("lightbox");
         const imageLightbox = document.querySelector(".lightbox__img");
         const videoLightbox = document.querySelector(".lightbox__video");
-        const titleLightbox = document.querySelector(".lightbox__title");
-
-        lightBoxBground.style.display = "block";
+        const titleLightbox = document.querySelector(".lightbox__title");        
 
         if (image && image !== "") {
             imageLightbox.style.display= "block";
@@ -32,7 +34,9 @@ const media = JSON.parse(mediaStr);
             imageLightbox.style.display = "none";
 
         }
-    } catch (error) {}
+    } catch (error) {
+
+    }
 }
 
 //fermer la modale lightbox
@@ -54,3 +58,22 @@ function closeLightBoxWitdhKeyboard(e) {
     closeLightBox();
   }
 }
+
+//Changer de média
+function mediaLightbox() {
+  // let mediaGallery = [];
+  // const medias = document.querySelectorAll(".lightbox__media");
+  // mediaGallery.push(medias);
+
+  // console.log(mediaGallery);
+
+  }
+
+function switchMedia() {
+    mediaLightbox(mediaIndex += n);
+}
+
+function currentMedia() {
+    mediaLightbox(mediaIndex = n);
+}
+

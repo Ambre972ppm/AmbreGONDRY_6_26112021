@@ -49,6 +49,7 @@ function mediaFactory(media) {
     const mediaCard = document.createElement('article');
     const mediaLink = document.createElement('a');
 
+    // mediaLink.setAttribute('onclick', `displayLightBox('${JSON.stringify(media)}')`); // Appel de la fonction qui ouvre la lightbox
     mediaLink.setAttribute('onclick', `displayLightBox('${JSON.stringify(media)}')`); // Appel de la fonction qui ouvre la lightbox
     mediaLink.setAttribute('alt', 'agrandir l\'aperçu' );
     mediaLink.setAttribute("tabindex", 0);
