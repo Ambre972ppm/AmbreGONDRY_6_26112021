@@ -33,6 +33,6 @@ contactForm.addEventListener("submit", function(e) {
   };
   localStorage.setItem("contact", JSON.stringify(contact));
   console.log(firstName.value, lastName.value, email.value, message.value);
-    
-  closeModal();  
+
+  closeModal();
 });
