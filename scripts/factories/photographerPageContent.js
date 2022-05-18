@@ -49,12 +49,12 @@ function mediaFactory(media) {
     const mediaCard = document.createElement('article');
     const mediaLink = document.createElement('a');
 
-    mediaLink.setAttribute('href', '#');
+    mediaLink.setAttribute('onCLick', `openLightbox(${id})`);
     mediaLink.setAttribute('alt', 'agrandir l\'aperçu' );
     mediaLink.setAttribute("tabindex", 0);
-    mediaLink.addEventListener('click', function() {
-      openLightbox(id);
-    });
+    // mediaLink.addEventListener('click', function() {
+    //   openLightbox(id);
+    // });
     mediaCard.appendChild(mediaLink); 
 
     const mediaFigcaption = document.createElement('figcaption'); // Création de la description du media
