@@ -36,8 +36,8 @@
 .lightbox__container {
   
   figure, img, video {
-    width: 100vh;
-    height: 90vh;
+    width: 90vh;
+    height: 80vh;
     border-radius: 5px;
     object-fit: cover;
   }
@@ -48,8 +48,8 @@
 
 .lightbox__media {
     object-fit: contain;
-    max-height: 90vh;
-    max-width: 100vh;
+    max-height: 90%;
+    max-width: 100%;
 }
 
 .lightbox__title {

@@ -1,5 +1,5 @@
 const photographerSelectedId = new URLSearchParams(window.location.search).get("id"); // récupération de l'id du photographe selectionné dans l'Url
-const mediaSection = document.getElementById("photograph-medias");
+const mediaSection = document.getElementById("photograph-medias"); // définition de la section qui contient la gallerie du photographe
 
 // Récupération des données dans le fichier JSON
 function getSelectedPhotographerData() {
@@ -10,7 +10,7 @@ function getSelectedPhotographerData() {
       medias = value.media;
 
       displayPhotographerSelected(photographers); // on appelle la fonction qui affiche la carte du photographe sélectionné
-      sortPopular(medias); // on affiche le tri des médias par défaut par popularité
+      sortPopular(medias); // on affiche la gallerie triée par défaut par popularité
     })
 }
 
@@ -26,9 +26,10 @@ function displayPhotographerSelected(photographers) {
 
 //Affichage des médias du photographe sélectionné
 function displayPhotographerSelectedMedias(medias) {
+  const lightboxList = document.querySelector(".lightbox_medias-list");
   let totalLikes = 0;
   let mediaGallery = [];
-  const lightboxList = document.querySelector(".lightbox_medias-list");
+  
   lightboxList.innerHTML = "";
 
   medias.forEach((media) => {
@@ -56,6 +57,7 @@ function displayMediaCard(media) {
 
 function handleMedia(media, lightboxList, photographerSelectedId, index) {
   const lightboxItem = document.createElement("figure");
+
   lightboxItem.setAttribute("class", 'lightbox__item');
   lightboxItem.setAttribute("id", media.id);
   lightboxItem.setAttribute("data-index", index);
@@ -71,24 +73,36 @@ function handleMedia(media, lightboxList, photographerSelectedId, index) {
 
 function handleImage(media, lightboxItem, photographerSelectedId) {
     const lightboxMedia = document.createElement("img");
+    const lightboxItemFigcaption = document.createElement("figcaption");
+
     lightboxMedia.setAttribute("src", `./assets/medias/${photographerSelectedId}/${media.image}`);
     lightboxMedia.setAttribute("class", 'lightbox__image');
     lightboxMedia.setAttribute("alt", `${media.title}`);
     lightboxMedia.setAttribute("data-id", media.id);
+
+    lightboxItemFigcaption.setAttribute("class", 'lightbox__title');
+    lightboxItemFigcaption.textContent = media.title;
+
     lightboxItem.appendChild(lightboxMedia);
+    lightboxItem.appendChild(lightboxItemFigcaption);
 }
 
 function handleVideo(media, lightboxItem, photographerSelectedId) {
-  if(media.video) {
     const lightboxMedia = document.createElement("video");
+    const lightboxItemFigcaption = document.createElement("figcaption");
+
     lightboxMedia.setAttribute("src", `./assets/medias/${photographerSelectedId}/${media.video}`);
     lightboxMedia.setAttribute("class", 'lightbox__video');
     lightboxMedia.setAttribute("controls", true);
     lightboxMedia.setAttribute("autoplay", true);
     lightboxMedia.setAttribute("alt", `${media.title}`);
     lightboxMedia.setAttribute("data-id", media.id);
+
+    lightboxItemFigcaption.setAttribute("class", 'lightbox__title');
+    lightboxItemFigcaption.textContent = media.title;
+
     lightboxItem.appendChild(lightboxMedia);
-  }
+    lightboxItem.appendChild(lightboxItemFigcaption);
 }
   
 // Gestion du tri selon le filtre sélectionné
