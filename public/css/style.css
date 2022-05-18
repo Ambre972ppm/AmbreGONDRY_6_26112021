@@ -143,8 +143,8 @@ form button {
 }
 
 .lightbox__container figure, .lightbox__container img, .lightbox__container video {
-  width: 100vh;
-  height: 90vh;
+  width: 90vh;
+  height: 80vh;
   border-radius: 5px;
   object-fit: cover;
 }
@@ -154,8 +154,8 @@ form button {
 
 .lightbox__media {
   object-fit: contain;
-  max-height: 90vh;
-  max-width: 100vh;
+  max-height: 90%;
+  max-width: 100%;
 }
 
 .lightbox__title {

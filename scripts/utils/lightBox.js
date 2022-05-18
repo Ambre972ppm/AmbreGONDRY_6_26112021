@@ -19,20 +19,21 @@ function openLightbox(id) {
 
   currentMedia.scrollIntoView();
 
-  //fermer la modale lightbox à l'aide du clavier
+  //appel les fonction au clavier
   window.addEventListener("keyup", (e) => {
-  closeLightBoxWitdhKeyboard(e);
-});
+    closeLightBoxWitdhKeyboard(e);
+    previousMediaWidthKeybord(e);
+    nextMediaWidthKeybord(e);
+  });
 }
 
 //fermer la modale lightbox
-function closeLightBox() {
+// au clic
+function closeLightBox() { 
   const lightBoxBground = document.getElementById("lightbox");
   lightBoxBground.style.display = "none";
 }
-
-
-
+// au clavier
 function closeLightBoxWitdhKeyboard(e) {
   if (
     (document.getElementById("lightbox").style.display =
@@ -42,6 +43,8 @@ function closeLightBoxWitdhKeyboard(e) {
   }
 }
 
+//navigation au media précédent
+// au clic
 function previousMedia() {
   let lightboxItems = document.getElementsByClassName("lightbox__item");
   let currentMediaIndex = localStorage.getItem("currentMediaIndex");
@@ -54,7 +57,18 @@ function previousMedia() {
   localStorage.setItem("currentMediaIndex", newCurrentMediaIndex);
   switchMedia();
 }
+// au clavier
+function previousMediaWidthKeybord(e) {
+  if (
+    (document.getElementById("lightbox").style.display =
+      "block" && e.key === "ArrowLeft")
+  ) {
+    previousMedia();
+  }
+}
 
+//navigation au media suivant
+// au clic
 function nextMedia() {
   let lightboxItems = document.getElementsByClassName("lightbox__item");
   let currentMediaIndex = localStorage.getItem("currentMediaIndex");
@@ -67,7 +81,17 @@ function nextMedia() {
   localStorage.setItem("currentMediaIndex", newCurrentMediaIndex);
   switchMedia();
 }
+// au clavier
+function nextMediaWidthKeybord(e) {
+  if (
+    (document.getElementById("lightbox").style.display =
+      "block" && e.key === "ArrowRight")
+  ) {
+    nextMedia();
+  }
+}
 
+//Affiche seulement le média courant
 function switchMedia() {
   let lightboxItems = document.getElementsByClassName("lightbox__item");
   let currentMediaIndex = localStorage.getItem("currentMediaIndex");
