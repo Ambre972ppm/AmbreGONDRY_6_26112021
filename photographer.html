@@ -18,45 +18,42 @@
             <aside id="photograph-introduction"></aside>
             <button class="contact_button" onclick="displayModal()" tabindex="0"    >Contactez-moi</button>
          </section>
-
          <section id="photograph-medias-section">
-               
-               <aside id="sortBy-menu">
-                  <div class="sortBy-menu">
-                     <label for="sortBy">Trier par</label>
-                     <select id="sortBy">
-                        <option value="Popularité">Popularité</option>
-                        <option value="Date">Date</option>
-                        <option value="Titre">Titre</option>
-                     </select>
-                  </div>
-               </aside>
-               
+            <aside id="sortBy-menu">
+               <div class="sortBy-menu">
+                  <label for="sortBy">Trier par</label>
+                  <select id="sortBy">
+                     <option value="Popularité">Popularité</option>
+                     <option value="Date">Date</option>
+                     <option value="Titre">Titre</option>
+                  </select>
+               </div>
+            </aside>
             <aside id="photograph-medias">
-            </aside>    
+            </aside>
             <div id="lightbox" aria-hidden="false" tabindex="-1">
                <div class="lightbox__content">
-                  <button class="closeLightBox" href="#" role="button" tabindex="0"> 
-                     <img src="assets/icons/close_red.svg" alt="fermer la lightbox" onclick="closeLightBox()">
+                  <button class="closeLightBox" tabindex="0"> 
+                  <img src="assets/icons/close_red.svg" alt="fermer la lightbox" onclick="closeLightBox()">
                   </button>
-                  <button class="lightbox-previous" data-directioninput="previous" tabindex="0" role="button" onclick="previousMedia()"> 
-                     <img src="./assets/icons/chevron-left.svg" alt="précédent" width="90em" height="90em">
+                  <button class="lightbox-previous" data-directioninput="previous" tabindex="0" onclick="previousMedia()"> 
+                  <img src="./assets/icons/chevron-left.svg" alt="précédent">
                   </button>
-                  <div class="lightbox__container"> 
+                  <div class="lightbox__container">
                      <div class="lightbox_medias-list">
                      </div>
                   </div>
-                  <button class="lightbox-next" data-directioninput="next" tabindex="0" role="button" onclick="nextMedia()"> 
-                     <img src="./assets/icons/chevron-right.svg" alt="suivant" width="90em" height="90em">
+                  <button class="lightbox-next" data-directioninput="next" tabindex="0" onclick="nextMedia()"> 
+                  <img src="./assets/icons/chevron-right.svg" alt="suivant">
                   </button>
                </div>
-             </div>
+            </div>
          </section>
          <aside id="all-likes-and-rate">
             <span id="photographer-total-like">
-               <span id="totalLikesCount">
-               </span>
-               <i class="fas fa-heart"></i>
+            <span id="totalLikesCount">
+            </span>
+            <i class="fas fa-heart"></i>
             </span>
             <span id="photographer-daily-rate">
             </span>

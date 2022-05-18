@@ -68,6 +68,10 @@
     &         :focus {
       border: $color-secondary;
     }
+    img {
+      width: 6em;
+      height: 6em;
+    }
 }
 .lightbox-previous {
   padding-left: 120px;

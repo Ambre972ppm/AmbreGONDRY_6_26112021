@@ -175,6 +175,10 @@ form button {
 .lightbox-previous :focus, .lightbox-next :focus {
   border: #d3573c;
 }
+.lightbox-previous img, .lightbox-next img {
+  width: 6em;
+  height: 6em;
+}
 
 .lightbox-previous {
   padding-left: 120px;
