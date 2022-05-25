@@ -15,7 +15,7 @@ function photographerFactory(data) {
 
     const profilePicture = document.createElement( 'img' ); // Création de la photo de profil
     profilePicture.setAttribute("src", picture); 
-    profilePicture.setAttribute("alt", `Photographe ${name}`); 
+    profilePicture.setAttribute("alt", `voir la page du photographe ${name}`); 
     profilePicture.setAttribute("tabindex", 0);
     photographerLink.appendChild(profilePicture); 
 
