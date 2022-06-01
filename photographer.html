@@ -44,7 +44,7 @@
       </main>
       <div id="lightbox" aria-hidden="false" aria-modal="true" aria-labelledby="lightbox"aria-describedby="lightbox" tabindex="-1" role="dialog">
          <div class="lightbox__content" role="document">
-            <button class="closeLightBox" tabindex="0"> 
+            <button id="close-lightbox" class="closeLightBox" tabindex="0"> 
             <img src="assets/icons/close_red.svg" alt="fermer la lightbox" onclick="closeLightBox()">
             </button>
             <button class="lightbox-previous" data-directioninput="previous" tabindex="0" onclick="previousMedia()"> 
@@ -64,7 +64,7 @@
             <div class="modal" role="document" tabindex="0">
                <header>
                   <h2 id="contact_modal_title" tabindex="0">Contactez-moi<br><span class="photographer_name" tabindex="0"></span></h2>
-                  <img src="./assets/icons/close_white.svg" alt="fermer le formulaire" onclick="closeModal()" tabindex="0"/>
+                  <img id="close-modal" src="./assets/icons/close_white.svg" alt="fermer le formulaire" onclick="closeModal()" tabindex="0"/>
                </header>
                <form id="contact_modal-form">
                   <div  class="contactFormData"

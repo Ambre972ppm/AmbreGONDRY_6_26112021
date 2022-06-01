@@ -35,6 +35,10 @@ function closeLightBox() {
   lightBoxBground.style.display = "none";
 }
 // au clavier
+document.getElementById('close-lightbox').addEventListener("keypress", () => {
+  closeLightBox();
+})
+
 function closeLightBoxWitdhKeyboard(e) {
   if (
     (document.getElementById("lightbox").style.display =

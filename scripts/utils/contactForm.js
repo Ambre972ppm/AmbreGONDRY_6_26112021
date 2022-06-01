@@ -16,6 +16,10 @@ window.addEventListener('keyup', (e) => {
   closeModalWitdhKeyboard(e);
 })
 
+document.getElementById('close-modal').addEventListener("keypress", () => {
+  closeModal();
+})
+
 function closeModalWitdhKeyboard(e) {
   if (document.getElementById("modal_bground").style.display ="block" && e.key === "Escape") {
     closeModal();
