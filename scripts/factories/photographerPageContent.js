@@ -100,8 +100,8 @@ function mediaFactory(media) {
       photographVideo.setAttribute("src", `${mediaUrl}`);
       photographVideo.setAttribute("data-id", `${id}`);
       photographVideo.setAttribute("title", `vidéo nommée ${title}`);
-      photographVideo.setAttribute("alt", `vidéo nommée ${title}`);
-      photographVideo.setAttribute("aria-label", `vidéo nommée ${title}`);
+      photographVideo.setAttribute("alt", `${title}`);
+      photographVideo.setAttribute("aria-label", `${title}`);
       photographVideo.setAttribute('class', 'photographer-media');
       photographVideo.setAttribute("tabindex", 0);
       mediaLink.appendChild(photographVideo);
