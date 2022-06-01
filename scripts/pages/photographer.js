@@ -28,7 +28,7 @@ function displayPhotographerSelected(photographers) {
 function displayPhotographerSelectedMedias(medias) {
   const lightboxList = document.querySelector(".lightbox_medias-list");
   let totalLikes = 0;
-  let mediaGallery = [];
+  let mediaGallery = []; // tableau des medias du photographer selectionné
   
   lightboxList.innerHTML = "";
 
@@ -49,12 +49,13 @@ function displayPhotographerSelectedMedias(medias) {
   addLikes(totalLikes);
 }
 
-function displayMediaCard(media) {
+function displayMediaCard(media) { // affiche les media à l'aide du design pattern
   const mediaModel = mediaFactory(media);
   const mediaCard = mediaModel.getMediaCard();
   mediaSection.appendChild(mediaCard);
 }
 
+//gestion media dans la lightbox
 function handleMedia(media, lightboxList, photographerSelectedId, index) {
   const lightboxItem = document.createElement("figure");
 
@@ -71,6 +72,7 @@ function handleMedia(media, lightboxList, photographerSelectedId, index) {
   }
 }
 
+// creation de l'image
 function handleImage(media, lightboxItem, photographerSelectedId) {
     const lightboxMedia = document.createElement("img");
     const lightboxItemFigcaption = document.createElement("figcaption");
@@ -87,6 +89,7 @@ function handleImage(media, lightboxItem, photographerSelectedId) {
     lightboxItem.appendChild(lightboxItemFigcaption);
 }
 
+//création de la video
 function handleVideo(media, lightboxItem, photographerSelectedId) {
     const lightboxMedia = document.createElement("video");
     const lightboxItemFigcaption = document.createElement("figcaption");
