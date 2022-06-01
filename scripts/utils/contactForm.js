@@ -2,6 +2,7 @@
 function displayModal() {
   const modalBground = document.getElementById("modal_bground");
   modalBground.style.display = "block";
+  modalBground.focus();
 }
 
 //close contact modal
@@ -22,18 +23,28 @@ function closeModalWitdhKeyboard(e) {
 }
 
 // sends data filled in the form in the local storage and in the console
-const contactForm = document.getElementById("contact_modal-form");
-contactForm.addEventListener("submit", function(e) {
-  e.preventDefault();
-  let contact = {
-    firstName: firstName.value,
-    lastName: lastName.value,
-    email: email.value,
-    message: message.value,
-  };
-  localStorage.setItem("contact", JSON.stringify(contact));
-  console.log(firstName.value, lastName.value, email.value, message.value);
+function submitForm() {
+  const contactForm = document.getElementById("contact_modal-form");
+  contactForm.addEventListener("submit", function(e) {
+    e.preventDefault();
+    let contact = {
+      firstName: firstName.value,
+      lastName: lastName.value,
+      email: email.value,
+      message: message.value,
+    };
+    localStorage.setItem("contact", JSON.stringify(contact));
+    console.log(firstName.value, lastName.value, email.value, message.value);
 
-  closeModal();
-});
+    closeModal();
+  });
+}
+
+// submit width Keybord
+function submitFormWitdhKeyboard(e) {
+  if (document.getElementById("modal_bground").style.display ="block" && e.key === "Enter") {
+    submitForm();
+  }
+}
+
 

@@ -16,7 +16,7 @@
       <main id="main">
          <section id="photograph-header">
             <aside id="photograph-introduction"></aside>
-            <button class="contact_button" onclick="displayModal()" tabindex="0"    >Contactez-moi</button>
+            <button class="contact_button" onclick="displayModal()" type="button" aria-haspopup="dialog" aria-controls="dialog" tabindex="0">Contactez-moi</button>
          </section>
          <section id="photograph-medias-section">
             <aside id="sortBy-menu">
@@ -31,23 +31,6 @@
             </aside>
             <aside id="photograph-medias">
             </aside>
-            <div id="lightbox" aria-hidden="false" tabindex="-1">
-               <div class="lightbox__content">
-                  <button class="closeLightBox" tabindex="0"> 
-                  <img src="assets/icons/close_red.svg" alt="fermer la lightbox" onclick="closeLightBox()">
-                  </button>
-                  <button class="lightbox-previous" data-directioninput="previous" tabindex="0" onclick="previousMedia()"> 
-                  <img src="./assets/icons/chevron-left.svg" alt="précédent">
-                  </button>
-                  <div class="lightbox__container">
-                     <div class="lightbox_medias-list">
-                     </div>
-                  </div>
-                  <button class="lightbox-next" data-directioninput="next" tabindex="0" onclick="nextMedia()"> 
-                  <img src="./assets/icons/chevron-right.svg" alt="suivant">
-                  </button>
-               </div>
-            </div>
          </section>
          <aside id="all-likes-and-rate">
             <span id="photographer-total-like">
@@ -59,52 +42,73 @@
             </span>
          </aside>
       </main>
-      <div id="modal_bground">
+      <div id="lightbox" aria-hidden="false" aria-modal="true" aria-labelledby="lightbox"aria-describedby="lightbox" tabindex="-1" role="dialog">
+         <div class="lightbox__content" role="document">
+            <button class="closeLightBox" tabindex="0"> 
+            <img src="assets/icons/close_red.svg" alt="fermer la lightbox" onclick="closeLightBox()">
+            </button>
+            <button class="lightbox-previous" data-directioninput="previous" tabindex="0" onclick="previousMedia()"> 
+            <img src="./assets/icons/chevron-left.svg" alt="précédent">
+            </button>
+            <div class="lightbox__container">
+               <div class="lightbox_medias-list">
+               </div>
+            </div>
+            <button class="lightbox-next" data-directioninput="next" tabindex="0" onclick="nextMedia()"> 
+            <img src="./assets/icons/chevron-right.svg" alt="suivant">
+            </button>
+         </div>
+      </div>
+      <div id="modal_bground" aria-modal="true" tabindex="-1" role="dialog">
          <div id="contact_modal">
-            <div class="modal">
+            <div class="modal" role="document" tabindex="0">
                <header>
-                  <h2 id="contact_modal_title">Contactez-moi<br><span class="photographer_name"></span></h2>
-                  <img src="./assets/icons/close_white.svg" alt="fermer le formulaire" onclick="closeModal()" />
+                  <h2 id="contact_modal_title" tabindex="0">Contactez-moi<br><span class="photographer_name" tabindex="0"></span></h2>
+                  <img src="./assets/icons/close_white.svg" alt="fermer le formulaire" onclick="closeModal()" tabindex="0"/>
                </header>
                <form id="contact_modal-form">
                   <div  class="contactFormData"
                      id="firstNameData">
-                     <label for="firstName">Prénom</label>
+                     <label for="firstName" tabindex="0">Prénom</label>
                      <input 
                         class="text-control"
                         type="text"
                         id="firstName"
                         name="firstName"
-                        minlength="2"/>
+                        minlength="2"
+                        tabindex="0"/>
                   </div>
-                  <div  class="contactFormDate"
+                  <div  class="contactFormData"
                      id="lastNameData">
-                     <label for="lastName">Nom</label>
+                     <label for="lastName" tabindex="0">Nom</label>
                      <input 
                         class="text-control"
                         type="text"
                         id="lastName"
                         name="lastName"
-                        minlength="2"/>
+                        minlength="2"
+                        tabindex="0"/>
                   </div>
-                  <div  class="contactFormDate"
+                  <div  class="contactFormData"
                      id="emailData">
-                     <label for="email">Email</label>
+                     <label for="email" tabindex="0">Email</label>
                      <input 
                         class="text-control"
                         type="email"
                         id="email"
-                        name="email"/>
+                        name="email"
+                        tabindex="0"/>
                   </div>
-                  <div  class="contactFormDate"
+                  <div  class="contactFormData"
                      id="messageData">
-                     <label for="message">Votre message</label>
+                     <label for="message" tabindex="0">Votre message</label>
                      <textarea   
                         class="text-control"
                         id="message"
-                        name="message"></textarea>
+                        name="message"
+                        tabindex="0"></textarea>
                   </div>
-                  <button class="contact_button" aria-label="contactez moi">Envoyer</button>
+                  <button class="contact_button" aria-label="contactez moi" type="submit" tabindex="0" onclick="submitForm()">Envoyer</button>
                </form>
             </div>
          </div>

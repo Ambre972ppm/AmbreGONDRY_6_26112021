@@ -4,6 +4,7 @@ function openLightbox(id) {
   let lightboxItems = document.getElementsByClassName("lightbox__item");
 
   lightBoxBground.style.display = "block";
+  lightBoxBground.focus();
 
   let currentMediaId = id;
 
