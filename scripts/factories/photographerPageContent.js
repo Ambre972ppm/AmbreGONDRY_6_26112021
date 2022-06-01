@@ -80,6 +80,7 @@ function mediaFactory(media) {
     const mediaLikesIcon = document.createElement('i'); // Création de l'icône de like
     mediaLikesIcon.classList.add('fas', 'fa-heart', 'mediaLikesIcon');
     mediaLikesIcon.setAttribute('aria-label', 'heart icon');
+    mediaLikesIcon.setAttribute('title', 'likes');
     mediaLikesIcon.setAttribute("tabindex", 0);
     mediaLikesContainer.appendChild(mediaLikesIcon);
 
@@ -98,7 +99,7 @@ function mediaFactory(media) {
       const photographVideo = document.createElement('video'); // Création de la vidéo
       photographVideo.setAttribute("src", `${mediaUrl}`);
       photographVideo.setAttribute("data-id", `${id}`);
-      photographVideo.setAttribute("alt", `vidéo nommée ${title}`);
+      photographVideo.setAttribute("title", `vidéo nommée ${title}`);
       photographVideo.setAttribute('class', 'photographer-media');
       photographVideo.setAttribute("tabindex", 0);
       mediaLink.appendChild(photographVideo);

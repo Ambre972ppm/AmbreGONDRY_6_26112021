@@ -137,43 +137,34 @@ form button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
   max-width: 100%;
   max-height: 100%;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
   margin: 0;
-  padding: 40px 0 20px 0;
 }
 
-.lightbox__container figure {
-  width: 600px;
-  height: 600px;
+.lightbox__container figure, .lightbox__container img, .lightbox__container video {
+  width: 90vh;
+  height: 80vh;
   border-radius: 5px;
   -o-object-fit: cover;
      object-fit: cover;
 }
 .lightbox__container img, .lightbox__container video {
-  max-width: 100%;
-  max-height: 100%;
+  -o-object-position: 10% 40%;
+     object-position: 10% 40%;
 }
 
-.lightbox-media {
+.lightbox__media {
   -o-object-fit: contain;
      object-fit: contain;
-  margin-bottom: 1em;
-  border-radius: 5px;
-  max-height: 60vh;
-  max-width: 80vw;
+  max-height: 90%;
+  max-width: 100%;
 }
 
 .lightbox__title {
-  font-size: 30px;
+  font-size: 24px;
   color: #901C1C;
-  align-self: flex-end;
+  align-self: flex-start;
 }
 
 .lightbox-previous, .lightbox-next {
@@ -186,6 +177,10 @@ form button {
 }
 .lightbox-previous :focus, .lightbox-next :focus {
   border: #d3573c;
+}
+.lightbox-previous img, .lightbox-next img {
+  width: 6em;
+  height: 6em;
 }
 
 .lightbox-previous {
@@ -285,8 +280,19 @@ form button {
      object-fit: cover;
   filter: drop-shadow(-1px 6px 8px #525252);
 }
+@media (max-width: 991px) {
+  #photograph-header {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    padding: 1rem;
+    margin: 0;
+  }
+  #photograph-header img {
+    display: none;
+  }
+}
 
-#photograph-introduction h2 {
+#photograph-introduction h1 {
   color: #d3573c;
   font-size: 64px;
   font-style: normal;
@@ -299,13 +305,13 @@ form button {
   color: #525252;
 }
 
-#photograph-introduction h3 {
+#photograph-introduction h2 {
   color: #901c1c;
   font-size: 24px;
   font-weight: 400;
 }
 
-#photograph-medias-section h3, .pictureLikes {
+#photograph-medias-section h2, .pictureLikes {
   color: #901c1c;
   font-size: 17px;
   font-weight: 400;
@@ -330,8 +336,7 @@ form button {
 }
 
 #photograph-medias-section {
-  margin-top: 20px;
-  margin: 100px;
+  padding: 100px;
 }
 
 #sortBy {
@@ -356,9 +361,18 @@ form button {
   gap: 2rem;
   margin-top: 80px;
 }
+@media (max-width: 991px) {
+  #photograph-medias {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+#photograph-medias article {
+  height: 400px;
+  width: 100%;
+}
 #photograph-medias img {
-  height: 16em;
-  width: 18em;
+  width: 100%;
+  height: 85%;
   -o-object-fit: cover;
      object-fit: cover;
   background: #C4C4C4;
@@ -366,8 +380,8 @@ form button {
   cursor: pointer;
 }
 #photograph-medias video {
-  height: 16em;
-  width: 18em;
+  width: 100%;
+  height: 85%;
   -o-object-fit: cover;
      object-fit: cover;
   background: #C4C4C4;
@@ -381,8 +395,9 @@ figcaption {
   align-items: center;
   color: #901c1c;
 }
-figcaption .mediaLikesContainer {
+figcaption .mediaLikesContainer .mediaLikesIcon {
   cursor: pointer;
+  color: rgba(144, 28, 28, 0.4666666667);
 }
 
 #all-likes-and-rate {

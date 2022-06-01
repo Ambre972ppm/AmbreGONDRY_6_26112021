@@ -36,3 +36,4 @@ contactForm.addEventListener("submit", function(e) {
 
   closeModal();
 });
+
